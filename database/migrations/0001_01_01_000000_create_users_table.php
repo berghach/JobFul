@@ -18,6 +18,14 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('phone')->nullable();
+            // $table->enum('role', ['admin', 'user', 'employee', 'freelancer', 'company', 'operator'])->default('user');
+            $table->string('industry')->nullable();
+            $table->string('bio')->nullable();
+            $table->string('location')->nullable();
+            $table->string('job')->nullable();
+            $table->string('company_name')->nullable();
+            $table->string('company_headquarter')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
