@@ -11,18 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->timestamps();
-        });
+        // Schema::create('roles', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('name');
+        //     $table->timestamps();
+        // });
 
-        Schema::create('role_model', function (Blueprint $table) {// the pivot table for roles and users
-            $table->foreignId('role_id')->constrained('roles', 'id')->cascadeOnDelete();
-            $table->string('model_type');
-            $table->foreignId('model_id')->constrained('users', 'id')->cascadeOnDelete();
-            $table->timestamps();
-        });
+        // Schema::create('role_model', function (Blueprint $table) {// the pivot table for roles and users
+        //     $table->foreignId('role_id')->constrained('roles', 'id')->cascadeOnDelete();
+        //     $table->string('model_type');
+        //     $table->foreignId('model_id')->constrained('users', 'id')->cascadeOnDelete();
+        //     $table->timestamps();
+        // });
     }
 
     /**
