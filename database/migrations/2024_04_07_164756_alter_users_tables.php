@@ -16,6 +16,7 @@ return new class extends Migration
         DB::statement("ALTER TABLE freelancers INHERIT users;");
         DB::statement("ALTER TABLE operators INHERIT users;");
         DB::statement("ALTER TABLE companies INHERIT users;");
+        DB::statement("ALTER TABLE admins INHERIT users;");
     }
 
     /**
