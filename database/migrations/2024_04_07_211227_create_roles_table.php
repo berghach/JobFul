@@ -17,10 +17,9 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('role_model', function (Blueprint $table) {// the pivot table for roles and users
+        Schema::create('rollable', function (Blueprint $table) {// the pivot table for roles and users
             $table->foreignId('role_id')->constrained('roles', 'id')->cascadeOnDelete();
-            $table->string('model_type');
-            $table->foreignId('model_id')->constrained('users', 'id')->cascadeOnDelete();
+            $table->morphs('rollable');
             $table->timestamps();
         });
     }

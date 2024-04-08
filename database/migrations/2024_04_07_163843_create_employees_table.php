@@ -19,7 +19,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('phone')->nullable();
-            $table->enum('role', ['admin', 'user', 'operator', 'freelancer', 'company', 'employee'])->default('employee');
+            $table->jsonb('links')->nullable();
+            // $table->enum('role', ['admin', 'user', 'operator', 'freelancer', 'company', 'employee'])->default('employee');
             $table->string('industry')->nullable();
             $table->string('bio')->nullable();
             $table->string('location')->nullable();
