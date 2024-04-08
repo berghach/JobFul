@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('bio')->nullable();
             $table->string('location')->nullable();
             $table->string('job')->nullable();
+            $table->foreignId('company_id')->nullable()->constrained('companies', 'id')->cascadeOnDelete();
             $table->rememberToken();
             $table->timestamps();
         });
