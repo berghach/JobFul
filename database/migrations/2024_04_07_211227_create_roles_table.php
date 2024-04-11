@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {// a role will be assign to users types models (employee, company, operator, ...)
             $table->id();
             $table->string('name');
             $table->timestamps();
         });
 
-        Schema::create('rollable', function (Blueprint $table) {// the pivot table for roles and users
+        Schema::create('rollable', function (Blueprint $table) {// the pivot table for roles and users models
             $table->foreignId('role_id')->constrained('roles', 'id')->cascadeOnDelete();
             $table->morphs('rollable');
             $table->timestamps();
@@ -30,6 +30,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('roles');
-        Schema::dropIfExists('role_model');
+        Schema::dropIfExists('rollable');
     }
 };

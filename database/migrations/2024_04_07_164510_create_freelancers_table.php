@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('freelancers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email')->unique()->primary(true);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('phone')->nullable();
@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('job')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            // $table->primary(['id', 'email']);
         });
         // DB::statement("ALTER TABLE freelancers INHERIT users;");
     }

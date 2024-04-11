@@ -22,13 +22,14 @@ return new class extends Migration
             $table->jsonb('contracts');// multiple values
             $table->boolean('isValid')->default(false);
             $table->jsonb('sections')->nullable();// for post additional information
-            $table->timestamps();
-        });
-        Schema::create('postable', function (Blueprint $table) {
-            $table->foreignId('post_id')->constrained('posts', 'id')->cascadeOnDelete();
             $table->morphs('postable');
             $table->timestamps();
         });
+        // Schema::create('postable', function (Blueprint $table) {// to link posts with each user role
+        //     $table->foreignId('post_id')->constrained('posts', 'id')->cascadeOnDelete();
+        //     $table->morphs('postable');
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -37,5 +38,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('posts');
+        // Schema::dropIfExists('postable');
     }
 };

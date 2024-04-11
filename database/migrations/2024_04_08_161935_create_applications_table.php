@@ -11,14 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('applications', function (Blueprint $table) {
+        Schema::create('applications', function (Blueprint $table) { // an application belongs to one employee and one post 
             $table->id();
             $table->text('message');
             $table->jsonb('files');
+            $table->jsonb('sections');
             $table->foreignId('employee_id')->constrained('employees', 'id')->cascadeOnDelete();
             $table->foreignId('post_id')->constrained('posts', 'id')->cascadeOnDelete();
             $table->timestamps();
-        });
+        });// but a post can have multiple applications so do an employee
     }
 
     /**
