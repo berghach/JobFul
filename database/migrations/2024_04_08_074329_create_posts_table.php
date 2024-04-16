@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('industry');
             $table->string('function');
             $table->string('location');
-            $table->jsonb('contracts');// multiple values
             $table->boolean('isValid')->default(false);
             $table->jsonb('sections')->nullable();// for post additional information
             $table->morphs('postable');

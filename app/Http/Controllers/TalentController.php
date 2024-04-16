@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Messages;
-use App\Http\Requests\StoreMessagesRequest;
-use App\Http\Requests\UpdateMessagesRequest;
+use App\Models\Talent;
+use App\Http\Requests\StoreTalentRequest;
+use App\Http\Requests\UpdateTalentRequest;
 
-class MessagesController extends Controller
+class TalentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class MessagesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreMessagesRequest $request)
+    public function store(StoreTalentRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class MessagesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Messages $messages)
+    public function show(Talent $talent)
     {
         //
     }
@@ -43,7 +43,7 @@ class MessagesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Messages $messages)
+    public function edit(Talent $talent)
     {
         //
     }
@@ -51,7 +51,7 @@ class MessagesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateMessagesRequest $request, Messages $messages)
+    public function update(UpdateTalentRequest $request, Talent $talent)
     {
         //
     }
@@ -59,7 +59,7 @@ class MessagesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Messages $messages)
+    public function destroy(Talent $talent)
     {
         //
     }

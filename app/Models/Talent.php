@@ -4,14 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Company extends User
+class Talent extends User
 {
     use HasFactory;
 
-    public function operators(): HasMany
+    public function posts(): MorphMany
     {
-        return $this->hasMany(Operator::class);
+        return $this->morphMany(Post::class, 'postable');
     }
 }

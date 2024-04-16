@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('notifications', function (Blueprint $table) { // a notification belongs to one user model
+        Schema::create('media', function (Blueprint $table) {
             $table->id();
-            $table->text('text');
-            $table->morphs('notifiable');
+            $table->string('name');
+            $table->string('path');
+            $table->string('type');
+            $table->morphs('mediable');
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('notifications');
+        Schema::dropIfExists('media');
     }
 };

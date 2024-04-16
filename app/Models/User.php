@@ -3,10 +3,13 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class User extends Authenticatable
 {
@@ -46,8 +49,24 @@ class User extends Authenticatable
         ];
     }
 
-    public function hasRole(): MorphOne
+    public function hasRole(): BelongsTo
     {
-        return $this->morphOne(Role::class, 'role_model');
+        return $this->belongsTo(Role::class);
+    }
+    public function posts(): MorphMany
+    {
+        return $this->morphMany(Post::class, 'postable');
+    }
+    public function applications(): HasMany
+    {
+        return $this->hasMany(Application::class);
+    }
+    public function images(): MorphMany
+    {
+        return $this->morphMany(Media::class, 'mediable')->where('type', 'image');
+    }
+    public function documents(): MorphMany
+    {
+        return $this->morphMany(Media::class, 'mediable')->where('type', 'document');
     }
 }

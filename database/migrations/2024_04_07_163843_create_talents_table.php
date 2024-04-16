@@ -12,24 +12,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('freelancers', function (Blueprint $table) {
+        Schema::create('talents', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique()->primary(true);
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('phone')->nullable();
-            $table->jsonb('links')->nullable();
-            // $table->enum('role', ['admin', 'user', 'operator', 'freelancer', 'company', 'employee'])->default('freelancer');
+            $table->foreignId('user_id')->constrained('users', 'id')->cascadeOnDelete();
             $table->string('industry')->nullable();
             $table->string('bio')->nullable();
             $table->string('location')->nullable();
             $table->string('job')->nullable();
+            $table->enum('talent_type', ['freelancer', 'job seeker']);
             $table->rememberToken();
             $table->timestamps();
             // $table->primary(['id', 'email']);
         });
-        // DB::statement("ALTER TABLE freelancers INHERIT users;");
+        // DB::statement("ALTER TABLE employees INHERIT users;");
+
     }
 
     /**
@@ -37,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('freelancers');
+        Schema::dropIfExists('empolyees');
     }
 };

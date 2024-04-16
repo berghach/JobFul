@@ -16,7 +16,7 @@ return new class extends Migration
             $table->text('message');
             $table->jsonb('files');
             $table->jsonb('sections');
-            $table->foreignId('employee_id')->constrained('employees', 'id')->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained('users', 'id')->cascadeOnDelete();
             $table->foreignId('post_id')->constrained('posts', 'id')->cascadeOnDelete();
             $table->timestamps();
         });// but a post can have multiple applications so do an employee

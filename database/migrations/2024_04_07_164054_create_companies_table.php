@@ -13,22 +13,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('companies', function (Blueprint $table) {
-            $table->id()->unique();
-            $table->string('name');
-            $table->string('email')->unique()->primary(true);
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('phone')->nullable();
-            $table->jsonb('links')->nullable();
-            // $table->enum('role', ['admin', 'user', 'operator', 'freelancer', 'company', 'employee'])->default('company');
+            $table->id();
+            $table->string('company_name')->nullable();
             $table->string('industry')->nullable();
             $table->string('bio')->nullable();
-            $table->string('location')->nullable();
-            $table->string('company_name')->nullable();
             $table->string('company_headquarter')->nullable();
+            $table->jsonb('links')->nullable();
+            $table->string('logo')->nullable();// path to logo image
             $table->rememberToken();
             $table->timestamps();
-            // $table->primary(['id', 'email']);
         });
         // DB::statement("ALTER TABLE companies INHERIT users;");
     }
