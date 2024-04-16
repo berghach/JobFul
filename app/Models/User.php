@@ -24,6 +24,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'links',
+        'role_id',
     ];
 
     /**
@@ -53,9 +56,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
-    public function posts(): MorphMany
+    public function posts(): HasMany
     {
-        return $this->morphMany(Post::class, 'postable');
+        return $this->hasMany(Post::class, 'user_id');
     }
     public function applications(): HasMany
     {

@@ -25,6 +25,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('phone')->nullable();
+            $table->jsonb('links')->nullable();
+            $table->jsonb('sections')->nullable();// for user additional information
             $table->foreignId('role_id')->constrained('roles', 'id')->cascadeOnDelete();
             $table->rememberToken();
             $table->timestamps();

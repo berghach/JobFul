@@ -22,7 +22,6 @@ return new class extends Migration
             $table->enum('talent_type', ['freelancer', 'job seeker']);
             $table->rememberToken();
             $table->timestamps();
-            // $table->primary(['id', 'email']);
         });
         // DB::statement("ALTER TABLE employees INHERIT users;");
 

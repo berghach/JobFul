@@ -15,16 +15,4 @@ class Operator extends User
     {
         return $this->belongsTo(Company::class);
     }
-    public function posts(): MorphMany
-    {
-        return $this->morphMany(Post::class, 'postable');
-    }
-    public function images(): MorphMany
-    {
-        return $this->morphMany(Media::class, 'mediable')->where('type', 'image');
-    }
-    public function documents(): MorphMany
-    {
-        return $this->morphMany(Media::class, 'mediable')->where('type', 'document');
-    }
 }

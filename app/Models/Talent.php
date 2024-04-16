@@ -10,9 +10,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Talent extends User
 {
     use HasFactory;
+    protected $fillable = [
+        'user_id',
+        'industry',
+        'bio',
+        'location',
+        'job',
+        'talent_type', 
+    ];
 
-    public function posts(): MorphMany
-    {
-        return $this->morphMany(Post::class, 'postable');
-    }
+    
 }

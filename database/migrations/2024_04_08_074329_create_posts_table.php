@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('location');
             $table->boolean('isValid')->default(false);
             $table->jsonb('sections')->nullable();// for post additional information
-            $table->morphs('postable');
+            $table->foreignId('user_id')->constrained('users', 'id')->cascadeOnDelete();
             $table->timestamps();
         });
         // Schema::create('postable', function (Blueprint $table) {// to link posts with each user role
