@@ -13,6 +13,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Post extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'post_type',
+        'title',
+        'description',
+        'industry',
+        'function',
+        'location',
+        'section',
+        'user_id',
+    ];
 
     public function applications(): HasMany
     {

@@ -20,15 +20,10 @@ return new class extends Migration
             $table->string('function');
             $table->string('location');
             $table->boolean('isValid')->default(false);
-            $table->jsonb('sections')->nullable();// for post additional information
+            $table->jsonb('sections')->nullable();// for post additional information (job type, skills, salary, service price, ...)
             $table->foreignId('user_id')->constrained('users', 'id')->cascadeOnDelete();
             $table->timestamps();
         });
-        // Schema::create('postable', function (Blueprint $table) {// to link posts with each user role
-        //     $table->foreignId('post_id')->constrained('posts', 'id')->cascadeOnDelete();
-        //     $table->morphs('postable');
-        //     $table->timestamps();
-        // });
     }
 
     /**
@@ -37,6 +32,5 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('posts');
-        // Schema::dropIfExists('postable');
     }
 };

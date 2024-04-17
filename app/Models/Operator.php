@@ -10,6 +10,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Operator extends User
 {
     use HasFactory;
+    protected $fillable = [
+        'user_id',
+        'industry',
+        'bio',
+        'location',
+        'job',
+        'company_id',
+    ];
 
     public function company(): BelongsTo
     {
