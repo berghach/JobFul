@@ -19,5 +19,9 @@
             <div>{{$item}}</div>
         @endforeach
         <div class=" bg-amber-400">{{App\Enums\Contract::Internship()}}</div>
+        <form action={{ route('logout') }} method="post">
+            @csrf
+            <button type="submit">Logout</button>
+        </form>
     </body>
 </html>

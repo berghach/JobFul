@@ -5,7 +5,13 @@ export default {
     "resources/views/**/*.blade.php",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: '#00DE6C',
+        secondary: '#1C713E',
+        home: '#F7E6D6'
+      }
+    },
   },
   plugins: [],
 }
