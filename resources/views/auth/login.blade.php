@@ -6,13 +6,22 @@
         <div>
             <img src="{{Vite::asset('resources/image/logo-white.png')}}" alt="">
         </div>
+        <!-- Session Status -->
+        <x-auth-session-status class="mb-4" :status="session('status')" />
         <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-3xl">
-            <!-- Session Status -->
-            <x-auth-session-status class="mb-4" :status="session('status')" />
 
             <form method="POST" action="{{ route('login') }}" class="flex flex-col justify-center gap-3">
                 @csrf
                 @method('POST')
+                @if ($errors->any())
+                    <div class=" text-red-600">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <!-- Email Address -->
                 <div>
                     <x-input-label for="email" :value="__('Email')" />

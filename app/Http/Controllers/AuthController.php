@@ -23,6 +23,8 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->intended('home');
+        }else{
+            return redirect()->back()->withErrors(['login' => 'The provided credentials do not match our records.']);
         }
     }
     public function destroy(Request $request): RedirectResponse
