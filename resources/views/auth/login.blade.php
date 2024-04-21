@@ -4,7 +4,7 @@
 <x-layout>
     <div class="min-h-screen flex flex-col sm:justify-center items-center align-middle pt-6 sm:pt-0 bg-primary">
         <div>
-            <img src="{{Vite::asset('resources/image/logo-white.png')}}" alt="">
+            <img src="{{Vite::asset('resources/images/logo-white.png')}}" alt="">
         </div>
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />

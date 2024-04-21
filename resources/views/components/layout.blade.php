@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <link rel="icon" href={{ Vite::asset('resources/image/logo-green.png') }}>
+        <link rel="icon" href={{ Vite::asset('resources/images/logo-green.png') }}>
 
         <title>{{ config('app.name') }}</title>
 
