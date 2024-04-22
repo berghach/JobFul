@@ -14,7 +14,9 @@ class UserController extends Controller
         $adminRole = $admin->role();
         $role = $admin->role()->first()->name;
         $roles = Role::all();
-        $users = Role::where('name', 'user')->users()->get(['*']);
-        return dd($adminRole, $role, $roles, $users);
+        $userRole = Role::where('name', 'user')->first();
+
+        $users = $userRole->users()->get(['id', 'name']);
+        return dd($adminRole, $role, $roles, $userRole, $users);
     }
 }

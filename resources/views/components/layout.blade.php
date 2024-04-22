@@ -17,6 +17,9 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <script>
+            feather.replace();
+        </script>
         <style>
             li {
                 /* border: 2px solid red; */
@@ -25,5 +28,10 @@
     </head>
     <body>
         {{ $slot }}
+        {{-- feather icons package script --}}
+        <script src={{ Vite::asset('node_modules\feather-icons\dist\feather.js')}}></script>
+        <script>
+            feather.replace();
+        </script>
     </body>
 </html>

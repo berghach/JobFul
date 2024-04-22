@@ -17,7 +17,16 @@ class CompanyFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'company_name' => fake()->company(),
+            'industry' => fake()->company(),
+            'bio' => fake()->sentence(),
+            'company_headquarter' => fake()->address(),
+            'links' => json_encode([
+                'Link 1' => fake()->url(),
+                'Link 2' => fake()->url(),
+                'Link 3' => fake()->url(),
+            ]),
+            'logo' => 'https://via.placeholder.com/150x150',
         ];
     }
 }

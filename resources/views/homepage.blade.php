@@ -7,11 +7,11 @@
         <div>{{$item->name}}</div>
     @endforeach
     <div class=" bg-amber-400">{{App\Enums\Contract::Internship()}}</div>
-    @if (!empty($role = Auth::user()->hasRole()))
+    @if (!empty($role = Auth::user()->role))
         <div>{{ Auth::user()->name }}</div>
-        {{-- <div>{{ $role->id }}</div> --}}
+        <div class=" bg-amber-400">{{ $role->name }}</div>
     @endif
-    <a href={{ route('admin') }}>admin</a>
+    {{-- <a href={{ route('test') }}>test</a> --}}
     <form action={{ route('logout') }} method="post">
         @csrf
         <button type="submit">Logout</button>

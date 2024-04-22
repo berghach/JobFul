@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -18,6 +19,12 @@ class Application extends Model
         'user_id',
         'post_id',
     ];
+    protected function casts(): array
+    {
+        return [
+            'sections' => AsArrayObject::class
+        ];
+    }
 
     public function user():BelongsTo
     {

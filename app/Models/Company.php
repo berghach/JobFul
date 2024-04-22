@@ -4,7 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class Company extends User
 {
@@ -17,9 +19,15 @@ class Company extends User
         'links',
         'logo',
     ];
-
-    public function operators(): HasMany
+    protected function casts(): array
     {
-        return $this->hasMany(Operator::class, 'company_id', 'id');
+        return [
+            'sections' => AsArrayObject::class
+        ];
+    }
+
+    public function companyables(): MorphToMany
+    {
+        return $this->morphToMany(User::class, 'companyable');
     }
 }

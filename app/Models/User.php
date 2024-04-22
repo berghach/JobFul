@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
@@ -48,11 +50,13 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'links' => AsArrayObject::class,
+            'sections' => AsArrayObject::class
         ];
     }
 
     public function role(): BelongsTo
-    {
+    {   
         return $this->belongsTo(Role::class);
     }
     public function posts(): HasMany
@@ -70,5 +74,9 @@ class User extends Authenticatable
     public function documents(): MorphMany
     {
         return $this->morphMany(Media::class, 'mediable')->where('type', 'document');
+    }
+    public function company(): MorphOne
+    {
+        return $this->morphOne(Company::class, 'companyable');
     }
 }

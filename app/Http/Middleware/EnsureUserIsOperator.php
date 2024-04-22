@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class EnsureUserIsAdmin
+class EnsureUserIsOperator
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class EnsureUserIsAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user()->role->name !== 'admin'){
+        if(Auth::user()->role->name !== 'operator'){
             return redirect()->route('home');
         }
         return $next($request);

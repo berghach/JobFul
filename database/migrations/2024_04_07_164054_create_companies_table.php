@@ -23,6 +23,10 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+        Schema::create('companyables', function (Blueprint $table) {
+            $table->foreignId('company_id')->constrained('companies', 'id')->cascadeOnDelete();
+            $table->morphs('companyable');
+        });
         // DB::statement("ALTER TABLE companies INHERIT users;");
     }
 
@@ -32,5 +36,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('companies');
+        Schema::dropIfExists('companyables');
     }
 };

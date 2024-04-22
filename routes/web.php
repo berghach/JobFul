@@ -8,11 +8,22 @@ use App\Http\Controllers\UserController;
 use App\Http\Middleware\EnsureUserIsAdmin;
 
 Route::middleware('auth')->group(function () {
+    Route::middleware('admin')->group(function () {
+        Route::get('/admin-dashboard', function () {
+            return view('admin.dashboard');
+        })->name('admin-dashboard');
+        // other admin routes
+    });
+    Route::middleware('operator')->group(function () {
+        Route::get('/operator-dashboard', function () {
+            return view('operator.dashboard');
+        })->name('operator-dashboard');
+        // other operator routes
+    });
     Route::get('/', function () {
         return view('homepage');
     })->name('home');
     Route::post('/logout', [AuthController::class, 'destroy'])->name('logout');
-    Route::get('/admin', [UserController::class, 'index'])->name('admin');
 });
 
 Route::middleware('guest')->group(function () {
@@ -22,8 +33,4 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [AuthController::class, 'store']);
 });
 
-// Route::middleware('auth:admin')->group(function () {
-//     Route::get('/', function () {
-//         return view('dashboard');
-//     })->name('dashboard');
-// });
+// Route::get('/test', [UserController::class, 'index'])->name('test');

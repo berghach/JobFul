@@ -26,6 +26,11 @@ return new class extends Migration
             $table->string('password');
             $table->string('phone')->nullable();
             $table->jsonb('links')->nullable();
+            $table->string('industry')->nullable();
+            $table->string('bio')->nullable();
+            $table->string('location')->nullable();
+            $table->string('job')->nullable();
+            // $table->foreignId('company_id')->constrained('companies', 'id')->cascadeOnDelete();
             $table->jsonb('sections')->nullable();// for user additional information
             $table->foreignId('role_id')->constrained('roles', 'id')->cascadeOnDelete();
             $table->rememberToken();
