@@ -1,14 +1,17 @@
 {{-- <div>
     The best way to take care of the future is to take care of the present moment. - Thich Nhat Hanh
 </div> --}}
-<x-layout>
-    <div class="min-h-screen flex flex-col sm:justify-center items-center align-middle pt-6 sm:pt-0 bg-primary">
+<x-guest>
+    <div class="h-screen flex flex-col gap-2 justify-center items-center  bg-primary">
         <div>
             <img src="{{Vite::asset('resources/images/logo-white.png')}}" alt="">
         </div>
+        <div>
+            <h1 class=" corinthia-bold text-5xl text-white">{{ __('Inside the job market') }}</h1>
+        </div>
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
-        <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-3xl">
+        <div class="w-full sm:max-w-md mt-3 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-3xl">
 
             <form method="POST" action="{{ route('login') }}" class="flex flex-col justify-center gap-3">
                 @csrf
@@ -62,4 +65,4 @@
             </form>
         </div>
     </div>
-</x-layout>
+</x-guest>

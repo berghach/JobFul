@@ -20,14 +20,14 @@ return new class extends Migration
             $table->string('company_headquarter');
             $table->jsonb('links')->nullable();
             $table->string('logo')->nullable();// path to logo image
-            $table->rememberToken();
             $table->timestamps();
         });
-        Schema::create('companyables', function (Blueprint $table) {
+        Schema::create('company_operators', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('company_id')->constrained('companies', 'id')->cascadeOnDelete();
-            $table->morphs('companyable');
+            $table->foreignId('operator_id')->constrained('users', 'id')->cascadeOnDelete();
+            $table->timestamps();
         });
-        // DB::statement("ALTER TABLE companies INHERIT users;");
     }
 
     /**
@@ -36,6 +36,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('companies');
-        Schema::dropIfExists('companyables');
+        Schema::dropIfExists('company_operators');
     }
 };

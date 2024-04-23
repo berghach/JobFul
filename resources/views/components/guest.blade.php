@@ -1,5 +1,5 @@
 {{-- <div>
-    <!-- Do what you can, with what you have, where you are. - Theodore Roosevelt -->
+    <!-- Breathing in, I calm body and mind. Breathing out, I smile. - Thich Nhat Hanh -->
 </div> --}}
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -40,13 +40,11 @@
             }
         </style>
     </head>
-    <body class=" bg-home">
-
-        @include('partials.navbar')
-
+    <body>
         {{ $slot }}
-        {{-- layout.js script --}}
-        <script src={{ Vite::asset('resources/js/layout.js') }}></script>
+
+        {{-- guest.js script --}}
+        <script src={{ Vite::asset('resources/js/guest.js') }}></script>
         {{-- feather icons package script --}}
         <script src={{ Vite::asset('node_modules\feather-icons\dist\feather.js')}}></script>
         <script>

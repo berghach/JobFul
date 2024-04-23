@@ -1,12 +1,15 @@
 {{-- <div>
     Do what you can, with what you have, where you are. - Theodore Roosevelt 
 </div> --}}
-<x-layout>
-    <div class="min-h-screen flex flex-col sm:justify-center items-center align-middle pt-6 sm:pt-0 bg-primary">
+<x-guest>
+    <div class="h-screen flex flex-col gap-2 justify-center items-center bg-primary">
         <div>
             <img src="{{Vite::asset('resources/images/logo-white.png')}}" alt="">
         </div>
-        <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-3xl">
+        <div>
+            <h1 class=" corinthia-bold text-5xl text-white">{{ __('Inside the job market') }}</h1>
+        </div>
+        <div class="w-full sm:max-w-md mt-3 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-3xl">
             <form method="POST" action="{{ route('register') }}" class="flex flex-col gap-3">
                 @csrf
                 @method('POST')
@@ -93,4 +96,4 @@
         </div>
     </div>
 
-</x-layout>
+</x-guest>

@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
@@ -75,8 +76,8 @@ class User extends Authenticatable
     {
         return $this->morphMany(Media::class, 'mediable')->where('type', 'document');
     }
-    public function company(): MorphOne
+    public function company(): BelongsToMany
     {
-        return $this->morphOne(Company::class, 'companyable');
+        return $this->belongsToMany(Company::class, 'company_operators', 'operator_id', 'company_id');
     }
 }
