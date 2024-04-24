@@ -11,7 +11,7 @@ class UpdateCompanyRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +21,25 @@ class UpdateCompanyRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
-        ];
+        $method = $this->method();
+        if ($method === 'PUT') {
+            return [
+                'company_name' => ['required', 'string', 'max:255'],
+                'industry' => ['required', 'string', 'max:255'],
+                'bio' => ['required', 'string'],
+                'company_headquarter' => ['required', 'string', 'max:255'],
+                'links' => ['required', 'array'],
+                'logo' => ['required', 'string', 'max:255'],
+            ];
+        }else{
+            return [
+                'company_name' => ['sometimes','required', 'string', 'max:255'],
+                'industry' => ['sometimes','required', 'string', 'max:255'],
+                'bio' => ['sometimes','required', 'string'],
+                'company_headquarter' => ['sometimes','required', 'string', 'max:255'],
+                'links' => ['sometimes','required', 'array'],
+                'logo' => ['sometimes','required', 'string', 'max:255'],
+            ];
+        }
     }
 }

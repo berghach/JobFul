@@ -21,7 +21,7 @@ class MediaFactory extends Factory
         $mediableType = fake()->randomElement([User::class, Post::class]);
         $mediableId = $mediableType === User::class ? User::class : Post::class;
         return [
-            'type' => fake()->randomElement(['jpg','png','jpeg','pdf']),
+            'type' => fake()->randomElement(['image','document']),
             'name' => fake()->word(),
             'path' => 'https://via.placeholder.com/150x150',
             'mediable_type' => $mediableType,

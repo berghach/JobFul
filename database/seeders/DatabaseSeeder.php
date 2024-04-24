@@ -26,6 +26,21 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@example.com',
             'role_id' => 1,
         ]);
+        User::factory()->create([
+            'name' => 'Talent User',
+            'email' => 'talent@example.com',
+            'role_id' => 2,
+        ]);
+        User::factory()->create([
+            'name' => 'Operator User',
+            'email' => 'operator@example.com',
+            'role_id' => 3,
+        ]);
+        User::factory()->create([
+            'name' => 'Chemseddine Berghach',
+            'email' => 'chemseddine@example.com',
+            'role_id' => 4,
+        ]);
         User::factory(10)->create();
 
         $operators = User::where('role_id', 3)->get();

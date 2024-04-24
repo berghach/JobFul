@@ -37,12 +37,38 @@
                     <h1>Notifications</h1>
                 </a>
             </div>
-            <a href="#" class=" flex flex-col items-center">
-                <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white" src={{ Auth::user()->images->first() ? Auth::user()->images->where('name', 'profil')->url : Vite::asset('resources/images/profil_placeholder.png') }} alt="">
-                <h1 class=" inline-flex text-secondary">{{ Auth::user()->name }}<i data-feather="chevron-down"></i></h1>
-            </a>
-            {{-- <a href="#" class="text-md font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a> --}}
-      </div>
+            <div class=" flex flex-col items-center">
+                <a href="#" class=" flex flex-col items-center">
+                    <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white" src={{ Auth::user()->images->first() ? Auth::user()->images->where('name', 'profil')->url : Vite::asset('resources/images/profil_placeholder.png') }} alt="">
+                </a>
+                <div class=" inline-flex items-center gap-x-1 px-3 py-1.5 text-lg text-secondary ">
+                    <h1 class=" inline-flex ">{{ explode(' ',Auth::user()->name)[0] }}</h1> {{-- to display only the first name --}}
+                    <i id="profile-dropdown-trigger" style="animation: ease-in-out 0.3s; transform: rotate(0deg);" data-feather="chevron-down" class="text-gray-500" data-feather="chevron-down"></i>
+                </div>
+            </div>
+            <ul id="profile-dropdown" class="absolute z-10 flex flex-col bg-white top-24 p-4 drop-shadow-lg gap-2 rounded-2xl hidden">
+                <li>
+                    <a class="inline-flex gap-x-2" href="">
+                        <i data-feather="user"></i>My profile</a>
+                </li>
+                <hr>
+                @if (Auth::user()->role->name === 'admin')
+                <li>
+                    <a class="inline-flex gap-x-2" href="">
+                        <i data-feather="activity"></i>Dashbord
+                    </a>
+                </li>
+                <hr>
+                @endif
+                <li>
+                    <form action="{{route('logout')}}" method="POST">
+                        @csrf
+                        <button class="inline-flex gap-x-2">
+                            <i data-feather="log-out"></i>Log out</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
     </nav>
     <!-- /Desktop navbar -->
 
@@ -57,9 +83,6 @@
                     <i id="mobile-search-trigger"
                         data-feather="search"></i>
                     <i data-feather="plus-circle"></i>
-                    <a href="#" class=" flex flex-col items-center">
-                        <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white" src={{ Auth::user()->images->first() ? Auth::user()->images->where('name', 'profil')->url : Vite::asset('resources/images/profil_placeholder.png') }} alt="">
-                    </a>
                 </div>
             </div>
             <div class="w-full flex justify-around items-center py-2">
@@ -79,11 +102,15 @@
                     <i data-feather="bell"></i>
                     <span class=" sr-only">Notifications</span>
                 </a>
+                <a href="#" class="text-md flex flex-col items-center align-middle gap-y-2 font-semibold leading-6 text-secondary">
+                    <img class="inline-block h-7 w-7 rounded-full ring-2 ring-white" src={{ Auth::user()->images->first() ? Auth::user()->images->where('name', 'profil')->url : Vite::asset('resources/images/profil_placeholder.png') }} alt="">
+                    <span class=" sr-only">Profil</span>
+                </a>
             </div>
         </div>
     </nav>
     <!-- Mobile navbar -->
-        <!-- Mobile search -->
+    <!-- Mobile search -->
     <div id="mobile-search" class="hidden" aria-modal="true">
         <div class="fixed inset-0 z-10"></div>
         <div class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
@@ -108,12 +135,11 @@
                     <div class="space-y-2 py-6">
                         {{-- Add content here --}}
                     </div>
-                    <div class="py-6">
-                        <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log in</a>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- /Mobile search -->
+
   </header>
   

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -23,7 +24,7 @@ class ApplicationFactory extends Factory
                 'file1.pdf'=> 'https://via.placeholder.com/150x150',
             ]),
             'user_id' => fake()->randomElement(User::pluck('id')),
-            'post_id' => fake()->randomElement(User::pluck('id')),
+            'post_id' => fake()->randomElement(Post::pluck('id')),
         ];
     }
 }

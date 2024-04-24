@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateMediaRequest extends FormRequest
@@ -11,7 +12,7 @@ class UpdateMediaRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -21,8 +22,19 @@ class UpdateMediaRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
-        ];
+        $method = $this->method();
+        if ($method == 'PUT'){
+            return [
+                'name' => ['required', 'string'],
+                'path' => ['required', 'string'],
+                'type' => ['required', 'string'],
+            ];
+        }else{
+            return [
+                'name' => ['sometimes','required', 'string'],
+                'path' => ['sometimes','required', 'string'],
+                'type' => ['sometimes','required', 'string'],
+            ];
+        }
     }
 }

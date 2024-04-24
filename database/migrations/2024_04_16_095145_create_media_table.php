@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('media', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
+            $table->enum('type', ['image', 'document']);
             $table->string('name');
             $table->string('path');
             $table->morphs('mediable');

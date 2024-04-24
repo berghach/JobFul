@@ -8,6 +8,7 @@
     @endforeach
     <div class=" bg-amber-400">{{App\Enums\Contract::Internship()}}</div>
     <div class=" text-red-600">{{Auth::user()->role()->first()->name}}</div>
+    <div>{{ Auth::id() }}</div>
     <form action={{ route('logout') }} method="post">
         @csrf
         <button type="submit">Logout</button>

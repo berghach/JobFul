@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreApplicationRequest extends FormRequest
@@ -11,7 +12,7 @@ class StoreApplicationRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -22,7 +23,26 @@ class StoreApplicationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'message' => ['required', 'string'],
+            'files' => ['required', 'array'],
+            'files.*.name' => ['required_with:files', 'string'],
+            'files.*.url' => ['required_with:files', 'string'],
+            'sections' => ['nullable', 'array'],
+            'sections.*.key' => ['required_with:sections', 'string'], 
+            'sections.*.value' => ['required_with:sections', 'string'], 
+            'post_id' => ['required', 'exists:posts,id'],
         ];
+    }
+     /**
+     * Get data to be validated from the request.
+     *
+     * @return array<string, mixed>
+     */
+    public function validationData(): array
+    {
+        // Include the user_id derived from the authenticated user in the validation data
+        return array_merge($this->all(), [
+            'user_id' => Auth::id(),
+        ]);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class StorePostRequest extends FormRequest
 {
@@ -11,7 +12,8 @@ class StorePostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        // return true;
+        return Auth::check();
     }
 
     /**
@@ -22,7 +24,27 @@ class StorePostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'post_type' => ['required', 'in:job request,job offer,service request,service offer'],
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string'],
+            'industry' => ['required', 'string', 'max:255'],
+            'function' => ['required', 'string', 'max:255'],
+            'location' => ['required', 'string', 'max:255'],
+            'section' => ['nullable', 'array'],
+            'section.*.key' => ['required_with:section', 'string'],
+            'section.*.value' => ['required_with:section', 'numeric'],
         ];
+    }
+    /**
+     * Get data to be validated from the request.
+     *
+     * @return array<string, mixed>
+     */
+    public function validationData(): array
+    {
+        // Include the user_id derived from the authenticated user in the validation data
+        return array_merge($this->all(), [
+            'user_id' => Auth::id(),
+        ]);
     }
 }

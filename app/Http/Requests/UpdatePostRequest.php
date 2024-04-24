@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdatePostRequest extends FormRequest
@@ -11,7 +12,7 @@ class UpdatePostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -21,8 +22,27 @@ class UpdatePostRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
-        ];
+        $method = $this->method();
+        if ($method == 'PUT'){
+            return [
+                'post_type' => ['required', 'in:job request,job offer,service request,service offer'],
+                'title' => ['required', 'string', 'max:255'],
+                'description' => ['required', 'string'],
+                'industry' => ['required', 'string', 'max:255'],
+                'function' => ['required', 'string', 'max:255'],
+                'location' => ['required', 'string', 'max:255'],
+                'section' => ['required', 'array'],
+            ];
+        }else{
+            return [
+                'post_type' => ['sometimes','required', 'in:job request,job offer,service request,service offer'],
+                'title' => ['sometimes','required', 'string', 'max:255'],
+                'description' => ['sometimes','required', 'string'],
+                'industry' => ['sometimes','required', 'string', 'max:255'],
+                'function' => ['sometimes','required', 'string', 'max:255'],
+                'location' => ['sometimes','required', 'string', 'max:255'],
+                'section' => ['sometimes','required', 'array'],
+            ];
+        }
     }
 }

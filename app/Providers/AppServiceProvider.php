@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
         Relation::enforceMorphMap([
             'role' => \App\Models\Role::class,
             'user' => \App\Models\User::class,
-            'companie' => \App\Models\Company::class,
+            'company' => \App\Models\Company::class,
             'post' => \App\Models\Post::class,
             'application' => \App\Models\Application::class,
             'tag' => \App\Models\Tag::class,
