@@ -20,7 +20,7 @@
         
         <div class="flex items-center gap-x-10 lg:justify-end me-4">
             <div class="flex gap-x-12">
-                <a href="#" class="text-md flex flex-col items-center align-middle gap-y-2 font-semibold leading-6 text-secondary">
+                <a href={{ route('home') }} class="text-md flex flex-col items-center align-middle gap-y-2 font-semibold leading-6 text-secondary">
                     <i data-feather="home"></i>
                     <h1>Home</h1>
                 </a>
@@ -52,9 +52,9 @@
                         <i data-feather="user"></i>My profile</a>
                 </li>
                 <hr>
-                @if (Auth::user()->role->name === 'admin')
+                @if (Auth::user()->role->name === 'admin' || Auth::user()->role->name === 'operator')
                 <li>
-                    <a class="inline-flex gap-x-2" href="">
+                    <a class="inline-flex gap-x-2" href="{{ Auth::user()->role->name === 'admin' ? route('admin-dashboard') : route('operator-dashboard') }}">
                         <i data-feather="activity"></i>Dashbord
                     </a>
                 </li>

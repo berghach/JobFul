@@ -24,7 +24,7 @@ class StoreMediaRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string'],
-            'path' => ['required', 'string'],
+            'path' => ['required', 'file'],
             'type' => ['required', 'string'],
         ];
     }

@@ -13,7 +13,8 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        // $tags = Tag::all();
+        // return view('components.layout', compact('tags'));
     }
 
     /**
@@ -29,7 +30,7 @@ class TagController extends Controller
      */
     public function store(StoreTagRequest $request)
     {
-        //
+        $tag = Tag::create($request->all());
     }
 
     /**
@@ -53,7 +54,7 @@ class TagController extends Controller
      */
     public function update(UpdateTagRequest $request, Tag $tag)
     {
-        //
+        $tag->update($request->all());
     }
 
     /**
@@ -61,6 +62,6 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        //
+        $tag->delete();
     }
 }

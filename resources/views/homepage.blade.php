@@ -12,8 +12,9 @@
         <div class=" bg-amber-400">{{ $role->name }}</div>
     @endif
     {{-- <a href={{ route('test') }}>test</a> --}}
-    <form action={{ route('logout') }} method="post">
-        @csrf
-        <button type="submit">Logout</button>
-    </form>
+    <ul>
+        @foreach ($tags as $item)
+            <li>{{$item->name}}</li>
+        @endforeach
+    </ul>
 </x-layout>

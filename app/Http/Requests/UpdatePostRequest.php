@@ -32,6 +32,8 @@ class UpdatePostRequest extends FormRequest
                 'function' => ['required', 'string', 'max:255'],
                 'location' => ['required', 'string', 'max:255'],
                 'section' => ['required', 'array'],
+                'section.*.key' => ['required_with:section', 'string'],
+                'section.*.value' => ['required_with:section', 'numeric'],
             ];
         }else{
             return [
@@ -42,6 +44,8 @@ class UpdatePostRequest extends FormRequest
                 'function' => ['sometimes','required', 'string', 'max:255'],
                 'location' => ['sometimes','required', 'string', 'max:255'],
                 'section' => ['sometimes','required', 'array'],
+                'section.*.key' => ['sometimes', 'required_with:section', 'string'],
+                'section.*.value' => ['sometimes', 'required_with:section', 'numeric'],
             ];
         }
     }

@@ -12,6 +12,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/admin-dashboard', function () {
             return view('admin.dashboard');
         })->name('admin-dashboard');
+        Route::post('/add-company', function(){return ['done'];})->name('company.store');
         // other admin routes
     });
     Route::middleware('operator')->group(function () {

@@ -29,7 +29,9 @@ class UpdateCompanyRequest extends FormRequest
                 'bio' => ['required', 'string'],
                 'company_headquarter' => ['required', 'string', 'max:255'],
                 'links' => ['required', 'array'],
-                'logo' => ['required', 'string', 'max:255'],
+                'links.*.name' => ['required_with:links', 'string'],
+                'links.*.url' => ['required_with:links', 'string'],
+                'logo' => ['required', 'file', 'max:255'],
             ];
         }else{
             return [
@@ -38,7 +40,9 @@ class UpdateCompanyRequest extends FormRequest
                 'bio' => ['sometimes','required', 'string'],
                 'company_headquarter' => ['sometimes','required', 'string', 'max:255'],
                 'links' => ['sometimes','required', 'array'],
-                'logo' => ['sometimes','required', 'string', 'max:255'],
+                'links.*.name' => ['sometimes', 'required_with:links', 'string'],
+                'links.*.url' => ['sometimes', 'required_with:links', 'string'],
+                'logo' => ['sometimes','required', 'file', 'max:255'],
             ];
         }
     }

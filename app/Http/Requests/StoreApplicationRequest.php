@@ -26,7 +26,7 @@ class StoreApplicationRequest extends FormRequest
             'message' => ['required', 'string'],
             'files' => ['required', 'array'],
             'files.*.name' => ['required_with:files', 'string'],
-            'files.*.url' => ['required_with:files', 'string'],
+            'files.*.url' => ['required_with:files', 'file'],
             'sections' => ['nullable', 'array'],
             'sections.*.key' => ['required_with:sections', 'string'], 
             'sections.*.value' => ['required_with:sections', 'string'], 
