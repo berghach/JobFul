@@ -27,7 +27,6 @@ class StoreCompanyRequest extends FormRequest
             'bio' => ['required', 'string'],
             'company_headquarter' => ['required', 'string', 'max:255'],
             'links' => ['nullable', 'array'],
-            'links.*.name' => ['required_with:links', 'string'],
             'links.*.url' => ['required_with:links', 'string'],
             'logo' => ['required', 'file', 'max:255'],
         ];
