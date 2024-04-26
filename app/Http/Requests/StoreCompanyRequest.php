@@ -22,13 +22,13 @@ class StoreCompanyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'company_name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
             'industry' => ['required', 'string', 'max:255'],
             'bio' => ['required', 'string'],
-            'company_headquarter' => ['required', 'string', 'max:255'],
+            'headquarter' => ['required', 'string', 'max:255'],
             'links' => ['nullable', 'array'],
             'links.*.url' => ['required_with:links', 'string'],
-            'logo' => ['required', 'file', 'max:255'],
+            'logo' => ['nullable', 'file', 'max:255'],
         ];
     }
 }

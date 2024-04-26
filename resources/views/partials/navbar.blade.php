@@ -24,10 +24,17 @@
                     <i data-feather="home"></i>
                     <h1>Home</h1>
                 </a>
-                <a href="#" class="text-md flex flex-col items-center align-middle gap-y-2 font-semibold leading-6 text-secondary">
-                    <i data-feather="briefcase"></i>
-                    <h1>Applications</h1>
-                </a>
+                @if (Auth::user()->role->name == 'admin' || Auth::user()->role->name == 'operator') {{-- nav link for admins or operators dashboard --}}
+                    <a href={{ Auth::user()->role->name === 'admin' ? route('admin-dashboard') : route('operator-dashboard') }} class="text-md flex flex-col items-center align-middle gap-y-2 font-semibold leading-6 text-secondary">
+                        <i data-feather="pie-chart"></i>
+                        <h1>Dashboard</h1>
+                    </a>
+                @else {{-- nav link for users applications either talent or a standard user --}}
+                    <a href="#" class="text-md flex flex-col items-center align-middle gap-y-2 font-semibold leading-6 text-secondary">
+                        <i data-feather="briefcase"></i>
+                        <h1>Applications</h1>
+                    </a>
+                @endif
                 <a href="#" class="text-md flex flex-col items-center align-middle gap-y-2 font-semibold leading-6 text-secondary">
                     <i data-feather="message-square"></i>
                     <h1>Messages</h1>
@@ -52,14 +59,6 @@
                         <i data-feather="user"></i>My profile</a>
                 </li>
                 <hr>
-                @if (Auth::user()->role->name === 'admin' || Auth::user()->role->name === 'operator')
-                <li>
-                    <a class="inline-flex gap-x-2" href="{{ Auth::user()->role->name === 'admin' ? route('admin-dashboard') : route('operator-dashboard') }}">
-                        <i data-feather="activity"></i>Dashbord
-                    </a>
-                </li>
-                <hr>
-                @endif
                 <li>
                     <form action="{{route('logout')}}" method="POST">
                         @csrf
@@ -86,14 +85,21 @@
                 </div>
             </div>
             <div class="w-full flex justify-around items-center py-2">
-                <a href="#" class="text-md flex flex-col items-center align-middle gap-y-2 font-semibold leading-6 text-secondary">
+                <a href={{ route('home') }} class="text-md flex flex-col items-center align-middle gap-y-2 font-semibold leading-6 text-secondary">
                     <i data-feather="home"></i>
                     <span class=" sr-only">Home</span>
                 </a>
-                <a href="#" class="text-md flex flex-col items-center align-middle gap-y-2 font-semibold leading-6 text-secondary">
-                    <i data-feather="briefcase"></i>
-                    <span class=" sr-only">Applications</span>
-                </a>
+                @if (Auth::user()->role->name === 'admin' || Auth::user()->role->name === 'operator')
+                    <a href={{ Auth::user()->role->name === 'admin' ? route('admin-dashboard') : route('operator-dashboard') }} class="text-md flex flex-col items-center align-middle gap-y-2 font-semibold leading-6 text-secondary">
+                        <i data-feather="pie-chart"></i>
+                        <span class=" sr-only">Dashboard</span>
+                    </a>
+                @else
+                    <a href="#" class="text-md flex flex-col items-center align-middle gap-y-2 font-semibold leading-6 text-secondary">
+                        <i data-feather="briefcase"></i>
+                        <span class=" sr-only">Applications</span>
+                    </a>
+                @endif
                 <a href="#" class="text-md flex flex-col items-center align-middle gap-y-2 font-semibold leading-6 text-secondary">
                     <i data-feather="message-square"></i>
                     <span class=" sr-only">Messages</span>
@@ -102,11 +108,24 @@
                     <i data-feather="bell"></i>
                     <span class=" sr-only">Notifications</span>
                 </a>
-                <a href="#" class="text-md flex flex-col items-center align-middle gap-y-2 font-semibold leading-6 text-secondary">
+                <button onclick="toggleProfileDropdownMobile()" class="text-md flex flex-col rounded-full focus:ring-primary focus:ring-4 items-center align-middle gap-y-2 font-semibold leading-6 text-secondary">
                     <img class="inline-block h-7 w-7 rounded-full ring-2 ring-white" src={{ Auth::user()->images->first() ? Auth::user()->images->where('name', 'profil')->url : Vite::asset('resources/images/profil_placeholder.png') }} alt="">
                     <span class=" sr-only">Profil</span>
-                </a>
+                </button>
             </div>
+            <ul id="profile-dropdown-mobile" class=" w-full flex justify-around p-4 gap-2 border-t-[1px] border-opacity-15 border-t-gray-500 hidden">
+                <li>
+                    <a class="inline-flex gap-x-2" href="">
+                        <i data-feather="user"></i>My profile</a>
+                </li>
+                <li>
+                    <form action="{{route('logout')}}" method="POST">
+                        @csrf
+                        <button class="inline-flex gap-x-2">
+                            <i data-feather="log-out"></i>Log out</button>
+                    </form>
+                </li>
+            </ul>
         </div>
     </nav>
     <!-- Mobile navbar -->

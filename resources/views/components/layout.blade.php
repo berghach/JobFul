@@ -44,9 +44,15 @@
 
         @include('partials.navbar')
 
+        {{-- @if (Auth::user()->role->name == 'admin')
+            @include('partials.add-company-form')
+        @endif --}}
+
         {{ $slot }}
         {{-- layout.js script --}}
         <script src={{ Vite::asset('resources/js/layout.js') }}></script>
+        {{-- dashboard.js script --}}
+        <script src={{ Vite::asset('resources/js/dashboard.js') }}></script>
         {{-- feather icons package script --}}
         <script src={{ Vite::asset('node_modules\feather-icons\dist\feather.js')}}></script>
         <script>

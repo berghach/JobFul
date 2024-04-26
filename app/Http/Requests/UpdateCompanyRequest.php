@@ -24,10 +24,10 @@ class UpdateCompanyRequest extends FormRequest
         $method = $this->method();
         if ($method === 'PUT') {
             return [
-                'company_name' => ['required', 'string', 'max:255'],
+                'name' => ['required', 'string', 'max:255'],
                 'industry' => ['required', 'string', 'max:255'],
                 'bio' => ['required', 'string'],
-                'company_headquarter' => ['required', 'string', 'max:255'],
+                'headquarter' => ['required', 'string', 'max:255'],
                 'links' => ['required', 'array'],
                 'links.*.name' => ['required_with:links', 'string'],
                 'links.*.url' => ['required_with:links', 'string'],
@@ -35,10 +35,10 @@ class UpdateCompanyRequest extends FormRequest
             ];
         }else{
             return [
-                'company_name' => ['sometimes','required', 'string', 'max:255'],
+                'name' => ['sometimes','required', 'string', 'max:255'],
                 'industry' => ['sometimes','required', 'string', 'max:255'],
                 'bio' => ['sometimes','required', 'string'],
-                'company_headquarter' => ['sometimes','required', 'string', 'max:255'],
+                'headquarter' => ['sometimes','required', 'string', 'max:255'],
                 'links' => ['sometimes','required', 'array'],
                 'links.*.name' => ['sometimes', 'required_with:links', 'string'],
                 'links.*.url' => ['sometimes', 'required_with:links', 'string'],

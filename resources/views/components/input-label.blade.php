@@ -3,6 +3,6 @@
 </div> --}}
 @props(['value'])
 
-<label {{ $attributes->merge(['class' => 'block font-large text-md text-gray-700 ']) }}>
+<label {{ $attributes->merge(['class' => 'block font-large font-semibold text-md text-gray-700 ']) }}>
     {{ $value ?? $slot }}
 </label>

@@ -23,12 +23,18 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*', function ($view) {
             $view->with([
                 'tags' => \App\Models\Tag::all(),
+                'companies' => \App\Models\Company::all(),
+                'users' => \App\Models\User::all(),
+                'posts' => \App\Models\Post::all(),
+                'applications' => \App\Models\Application::all(),
+                'media' => \App\Models\Media::all()
+
                 // Add other data variables here
             ]);
         });
         view()->composer('admin.*', function ($view) {
             $view->with([
-                'roles' => \App\Models\Role::all()
+                // 'companies' => \App\Models\Company::all()
             ]);
         });
 

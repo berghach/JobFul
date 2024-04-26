@@ -1,4 +1,3 @@
-@props(['value', 'disabled' => false])
+@props([ 'disabled' => false])
 
-    <span>{{$value}}</span>
-    <input {!! $attributes->merge(['class' => 'sr-only', 'type' => 'file']) !!} >
+    <input {!! $attributes->merge(['class' => '', 'type' => 'file']) !!} >

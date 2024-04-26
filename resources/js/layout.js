@@ -1,3 +1,9 @@
+// Function to handle profile dropdown mobile visibility
+function toggleProfileDropdownMobile() {
+    const profileDropdownMobile = document.getElementById('profile-dropdown-mobile');
+    profileDropdownMobile.classList.toggle('hidden');
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     const desktopSearchInput = document.querySelector('input[id="desktop-search"]');
     const mobileSearchInput = document.querySelector('input[id="mobile-search"]');
@@ -29,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Add event listeners to manage profile dropdown visibility
     profileDropdownTrigger.addEventListener('click', toggleProfileDropdown);
+
     window.onclick = function(event) {
         if (!event.target.matches('#profile-dropdown-trigger')) {
             if (!profileDropdown.classList.contains('hidden')) {
@@ -50,4 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Add event listeners to manage mobile search visibility
     mobileSearchTrigger.addEventListener('click', toggleMobileSearch);
     mobileSearchClose.addEventListener('click', toggleMobileSearch);
+
 });
+
+

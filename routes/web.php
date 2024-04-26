@@ -12,7 +12,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/admin-dashboard', function () {
             return view('admin.dashboard');
         })->name('admin-dashboard');
-        Route::post('/add-company', function(){return ['done'];})->name('company.store');
+        Route::get('/add-company', function () {
+            return view('admin.add-company');
+        })->name('company.create');
+        Route::post('/add-company/store', function(){return ['done'];})->name('company.store');
         // other admin routes
     });
     Route::middleware('operator')->group(function () {
@@ -21,7 +24,7 @@ Route::middleware('auth')->group(function () {
         })->name('operator-dashboard');
         // other operator routes
     });
-    Route::get('/', function () {
+    Route::get('/homepage', function () {
         return view('homepage');
     })->name('home');
     Route::post('/logout', [AuthController::class, 'destroy'])->name('logout');

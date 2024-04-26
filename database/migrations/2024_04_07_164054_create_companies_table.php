@@ -14,10 +14,10 @@ return new class extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
-            $table->string('company_name');
+            $table->string('name');
             $table->string('industry');
             $table->string('bio');
-            $table->string('company_headquarter');
+            $table->string('headquarter');
             $table->jsonb('links')->nullable();
             $table->string('logo')->nullable();// path to logo image
             $table->timestamps();

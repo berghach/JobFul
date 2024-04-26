@@ -14,10 +14,10 @@ class Company extends User
 {
     use HasFactory;
     protected $fillable = [
-        'company_name',
+        'name',
         'industry',
         'bio',
-        'company_headquarter',
+        'headquarter',
         'links',
         'logo',
     ];

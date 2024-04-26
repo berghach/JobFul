@@ -17,10 +17,10 @@ class CompanyFactory extends Factory
     public function definition(): array
     {
         return [
-            'company_name' => fake()->company(),
+            'name' => fake()->company(),
             'industry' => fake()->company(),
             'bio' => fake()->sentence(),
-            'company_headquarter' => fake()->address(),
+            'headquarter' => fake()->address(),
             'links' => json_encode([
                 'Link 1' => fake()->url(),
                 'Link 2' => fake()->url(),

@@ -39,28 +39,28 @@
                 <div name="user-info" class="flex flex-col gap-3 hidden">
                     <!-- Name -->
                     <div>
-                        <x-input-label for="name" :value="__('Full name')" />
+                        <x-input-label for="name" class="after:ml-0.5 after:text-red-500 after:content-['*']" :value="__('Full name')" />
                         <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
                         <x-input-error :messages="$errors->get('name')" class="mt-2" />
                     </div>
     
                     <!-- Email Address -->
                     <div>
-                        <x-input-label for="email" :value="__('Email')" />
+                        <x-input-label for="email" class="after:ml-0.5 after:text-red-500 after:content-['*']" :value="__('Email')" />
                         <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="email" />
                         <x-input-error :messages="$errors->get('email')" class="mt-2" />
                     </div>
     
                     {{-- Phone number --}}
                     <div>
-                        <x-input-label for="phone" :value="__('Phone number')" />
+                        <x-input-label for="phone" class="after:ml-0.5 after:text-red-500 after:content-['*']" :value="__('Phone number')" />
                         <x-text-input id="phone" class="block mt-1 w-full" type="tel" name="phone" :value="old('phone')" required autocomplete="phone_number" />
                         <x-input-error :messages="$errors->get('phone_number')" class="mt-2" />
                     </div>
     
                     <!-- Password -->
                     <div>
-                        <x-input-label for="password" :value="__('Password')" />
+                        <x-input-label for="password" class="after:ml-0.5 after:text-red-500 after:content-['*']" :value="__('Password')" />
     
                         <x-text-input id="password" class="block mt-1 w-full"
                                         type="password"
@@ -72,7 +72,7 @@
     
                     <!-- Confirm Password -->
                     <div>
-                        <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+                        <x-input-label for="password_confirmation" class="after:ml-0.5 after:text-red-500 after:content-['*']" :value="__('Confirm Password')" />
     
                         <x-text-input id="password_confirmation" class="block mt-1 w-full"
                                         type="password"
