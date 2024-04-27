@@ -1,7 +1,7 @@
 {{-- <div>
     Do what you can, with what you have, where you are. - Theodore Roosevelt 
 </div> --}}
-<x-guest>
+<x-guest title="Sign Up">
     <div class="h-screen flex flex-col gap-2 justify-center items-center bg-primary">
         <div>
             <img src="{{Vite::asset('resources/images/logo-white.png')}}" alt="">

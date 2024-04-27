@@ -24,7 +24,7 @@ Route::middleware('auth')->group(function () {
         })->name('operator-dashboard');
         // other operator routes
     });
-    Route::get('/homepage', function () {
+    Route::get('/', function () {
         return view('homepage');
     })->name('home');
     Route::post('/logout', [AuthController::class, 'destroy'])->name('logout');

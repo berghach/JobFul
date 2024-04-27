@@ -10,7 +10,7 @@
 
         <link rel="icon" href={{ Vite::asset('resources/images/logo-green.png') }}>
 
-        <title>{{ config('app.name') }}</title>
+        <title>{{ config('app.name') }} - {{ $title }}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -43,12 +43,11 @@
     <body class=" bg-home">
 
         @include('partials.navbar')
+        @include('partials.sidebar')
 
-        {{-- @if (Auth::user()->role->name == 'admin')
-            @include('partials.add-company-form')
-        @endif --}}
-
-        {{ $slot }}
+        <section class="flex flex-col items-center md:ml-64 mt-32 p-4">
+            {{ $slot }}
+        </section>
         {{-- layout.js script --}}
         <script src={{ Vite::asset('resources/js/layout.js') }}></script>
         {{-- dashboard.js script --}}

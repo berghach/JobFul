@@ -2,7 +2,7 @@
     <!-- Simplicity is an acquired taste. - Katharine Gerould -->
 </div> --}}
 
-<x-layout>
+<x-layout title="Admin Dashboard">
     @foreach ($collection = App\Enums\Contract::getValues() as $item)
         <div>{{$item}}</div>
     @endforeach

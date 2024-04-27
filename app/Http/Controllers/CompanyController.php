@@ -29,7 +29,24 @@ class CompanyController extends Controller
      */
     public function store(StoreCompanyRequest $request)
     {
-        //
+        $company = new Company();
+        $company->name = $request->input('name');
+        $company->industry = $request->input('industry');
+        $company->bio = $request->input('bio');
+        $company->headquarter = $request->input('headquarter');
+
+        if ($request->has('links')) {
+            $company->links = $request->input('links');
+        }
+
+        if ($request->hasFile('logo')) {
+            $logoPath = $request->file('logo')->store('logos'); 
+            $company->logo = $logoPath; 
+        }
+
+        $company->save();
+
+        return redirect()->route('companies.index')->with('success', 'Company created successfully!');
     }
 
     /**
@@ -53,7 +70,31 @@ class CompanyController extends Controller
      */
     public function update(UpdateCompanyRequest $request, Company $company)
     {
-        //
+        $company->name = $request->input('name');
+        $company->industry = $request->input('industry');
+        $company->bio = $request->input('bio');
+        $company->headquarter = $request->input('headquarter');
+
+        if ($request->has('links')) {
+            $company->links = $request->input('links');
+        } 
+
+        if ($request->hasFile('logo')) {
+            $logoPath = $request->file('logo')->store('logos'); 
+            $company->logo = $logoPath; 
+        }
+
+        $company->save();
+
+        return redirect()->route('companies.index')->with('success', 'Company updated successfully!');
+
+    }
+    /**
+     * Soft delete the specified resource from storage.
+     */
+    public function softDelete(Company $company)
+    {
+        // 
     }
 
     /**
@@ -61,6 +102,6 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        //
+        $company->delete();
     }
 }

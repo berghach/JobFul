@@ -4,6 +4,14 @@ function toggleProfileDropdownMobile() {
     profileDropdownMobile.classList.toggle('hidden');
 }
 
+function removeLink(linkNum) {
+    const linkToRemove = document.getElementById(`links[${linkNum}]`);
+
+    if (linkToRemove) {
+        linkToRemove.remove();
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     const desktopSearchInput = document.querySelector('input[id="desktop-search"]');
     const mobileSearchInput = document.querySelector('input[id="mobile-search"]');

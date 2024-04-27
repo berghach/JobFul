@@ -1,7 +1,7 @@
 {{-- <div>
     The best way to take care of the future is to take care of the present moment. - Thich Nhat Hanh
 </div> --}}
-<x-guest>
+<x-guest title="Login">
     <div class="h-screen flex flex-col gap-2 justify-center items-center  bg-primary">
         <div>
             <img src="{{Vite::asset('resources/images/logo-white.png')}}" alt="">

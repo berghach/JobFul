@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout title="Add Company">
     <div class="w-full sm:max-w-md mt-3 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-3xl">
         <form method="POST" action="{{ route('company.store') }}" class="flex flex-col gap-3" enctype="multipart/form-data">
             @csrf
@@ -51,10 +51,10 @@
                 <h1 class="font-large font-semibold text-md text-gray-700">{{__('Company links')}}</h1>
                 <div id="links-container" class="flex flex-col gap-1">
                     <div id="links[0]" class="inline-flex items-center gap-1">
-                        <x-text-input id="links[0][url]" type="text" name="links[0][url]" class="block mt-1 w-full"  placeholder="Link 1"/>
+                        <input id="links[0][url]" type="text" name="links[0][url]" class="block mt-1 w-full h-10 ps-3 border-gray-300 border-2 rounded-xl shadow-sm"  placeholder="Link 1"/>
                     </div>
                 </div>
-                <x-secondary-button type="button" id="add-link" onclick="addLink()" class=" inline-flex w-10 h-10 p-1 items-center justify-center">
+                <x-secondary-button type="button" onclick="addLink()" class=" inline-flex w-10 h-10 p-1 items-center justify-center">
                     <i data-feather="plus"></i></x-secondary-button>
                 
                 {{--  --}}
@@ -71,30 +71,3 @@
         </form>
     </div>
 </x-layout>
-
-{{-- <script>
-    function addLink() {
-        const linksContainer = document.getElementById('links-container');
-
-        let linkCount = linksContainer.childElementCount;
-
-        const linkDiv = document.createElement('div');
-        linkDiv.setAttribute('id', `links[${linkCount}]`);
-        linkDiv.setAttribute('class', 'inline-flex items-center gap-1');
-        linkDiv.innerHTML = `
-            <x-text-input id="links[${linkCount}][url]" type="text" name="links[${linkCount}][url]" class="block mt-1 w-full"  placeholder="Link ${linkCount + 1}"/>
-            <button type="button" onclick="removeLink(${linkCount})">
-                <i class=" text-red-600" data-feather="minus-circle"></i>
-            </button>
-        `;
-        linksContainer.appendChild(linkDiv);
-        feather.replace();
-    }
-    function removeLink(linkNum) {
-    const linkToRemove = document.getElementById(`links[${linkNum}]`);
-
-    if (linkToRemove) {
-        linkToRemove.remove();
-    }
-}
-</script> --}}

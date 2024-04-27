@@ -1,9 +1,9 @@
 {{-- <div>
     <!-- Do what you can, with what you have, where you are. - Theodore Roosevelt -->
 </div> --}}
-<header class="bg-white">
+<header class="bg-white fixed top-0 left-0 right-0 z-50 h-32">
     <!-- Desktop navbar -->
-    <nav class=" hidden mx-auto lg:flex max-w-full items-center justify-between px-6 py-3 " aria-label="Global">
+    <nav class=" hidden mx-auto lg:flex max-w-full items-center justify-between px-6 pt-6 " aria-label="Global">
         <div class="flex items-center gap-x-5">
             <a href={{ route('home') }} class="m-1.5 p-1.5">
                 <img class="h-9 w-auto" src={{ Vite::asset('resources/images/logo-green.png') }} alt="">
