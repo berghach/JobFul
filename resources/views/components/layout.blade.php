@@ -43,7 +43,7 @@
     <body class=" bg-home">
 
         @include('partials.navbar')
-        @include('partials.sidebar')
+        {{-- @include('partials.sidebar') --}}
 
         <section class="flex flex-col items-center md:ml-64 mt-32 p-4">
             {{ $slot }}

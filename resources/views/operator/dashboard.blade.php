@@ -2,6 +2,7 @@
     <!-- Walk as if you are kissing the Earth with your feet. - Thich Nhat Hanh -->
 </div> --}}
 <x-layout title="Operator Dashboard">
+    @include('partials.sidebar')
     @foreach ($collection = App\Enums\Contract::getValues() as $item)
         <div>{{$item}}</div>
     @endforeach

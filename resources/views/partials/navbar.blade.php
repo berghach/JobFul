@@ -31,7 +31,7 @@
                     </a>
                 @else {{-- nav link for users applications either talent or a standard user --}}
                     <a href="#" class="text-md flex flex-col items-center align-middle gap-y-2 font-semibold leading-6 text-secondary">
-                        <i data-feather="briefcase"></i>
+                        <i data-feather="folder"></i>
                         <h1>Applications</h1>
                     </a>
                 @endif
@@ -96,7 +96,7 @@
                     </a>
                 @else
                     <a href="#" class="text-md flex flex-col items-center align-middle gap-y-2 font-semibold leading-6 text-secondary">
-                        <i data-feather="briefcase"></i>
+                        <i data-feather="folder"></i>
                         <span class=" sr-only">Applications</span>
                     </a>
                 @endif

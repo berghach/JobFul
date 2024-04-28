@@ -1,5 +1,5 @@
 
-<x-layout>
+<x-layout title="Homepage">
     @foreach ($collection = App\Enums\Contract::getValues() as $item)
         <div>{{$item}}</div>
     @endforeach

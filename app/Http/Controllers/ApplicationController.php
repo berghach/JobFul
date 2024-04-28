@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Application;
 use App\Http\Requests\StoreApplicationRequest;
 use App\Http\Requests\UpdateApplicationRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ApplicationController extends Controller
 {
@@ -29,7 +30,21 @@ class ApplicationController extends Controller
      */
     public function store(StoreApplicationRequest $request)
     {
-        //
+        $validatedData = $request->validated();
+
+        $application = new Application();
+        $application->message = $validatedData['message'];
+        $application->post_id = $validatedData['post_id'];
+        $application->user_id = $validatedData['user_id'];
+        $application->files = $validatedData['files'];
+        foreach ($validatedData['files'] as $file) {
+            // Storage::putFileAs()
+        }
+        $application->sections = $validatedData['sections'];
+        $application->save();
+
+        return redirect()->route('applications.index')->with('success', 'Application submitted successfully.');
+
     }
 
     /**
@@ -53,7 +68,12 @@ class ApplicationController extends Controller
      */
     public function update(UpdateApplicationRequest $request, Application $application)
     {
-        //
+        $validatedData = $request->validated();
+
+        $application->update($validatedData);
+
+        return redirect()->route('applications.index')->with('success', 'Application updated successfully.');
+
     }
 
     /**
@@ -61,6 +81,9 @@ class ApplicationController extends Controller
      */
     public function destroy(Application $application)
     {
-        //
+        $application->files->each(function ($file) {
+            Storage::delete($file->url);
+        });
+        $application->delete();
     }
 }
