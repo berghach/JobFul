@@ -12,6 +12,13 @@ function removeLink(linkNum) {
     }
 }
 
+function togglePostForm() {
+    const crudModalPost = document.getElementById('crud-modal-post');
+    crudModalPost.classList.toggle('hidden');
+}
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
     const desktopSearchInput = document.querySelector('input[id="desktop-search"]');
     const mobileSearchInput = document.querySelector('input[id="mobile-search"]');
@@ -65,6 +72,79 @@ document.addEventListener('DOMContentLoaded', function () {
     // Add event listeners to manage mobile search visibility
     mobileSearchTrigger.addEventListener('click', toggleMobileSearch);
     mobileSearchClose.addEventListener('click', toggleMobileSearch);
+
+    // Function to manage post form additional fields visibility
+    const postTypeField = document.getElementById('post-type-field');
+    const postExtraInfo = document.getElementById('post-extra-info');
+    if(postTypeField) {
+        postTypeField.addEventListener('change', function() {
+        switch (document.querySelector('input[name="post_type"]:checked').value) {
+                case 'job request':
+                    jobAdditionalInfo();
+                    console.log('this is a job request');
+                    break;
+                case 'job offer':
+                    jobAdditionalInfo();
+                    console.log('this is a job offer');
+                    break;
+                case 'service request':
+                    serviceAdditionalInfo();
+                    console.log('this is a service request');
+                    break;
+                case 'service offer':
+                    serviceAdditionalInfo();
+                    console.log('this is a service offer');
+                    break;
+                default:
+                    console.log('choice not found');
+                    break;
+            }
+        });
+    }
+
+    function jobAdditionalInfo() {
+        postExtraInfo.innerHTML = `
+        <p class="block mb-2 text-sm font-medium text-gray-900">Contract</p>
+        <input class="hidden" type="text" name="section[0][key]" value="contract">
+        <select name="section[0][value]" id="section[0][value]" class=" border border-gray-300 text-gray-900 text-sm rounded-2xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " required autocomplete="option">
+            <option value="" disabled selected>Choose contract type</option>
+            @foreach ($contracts as $item)
+                <option value="{{$item}}">{{$item}}</option>
+            @endforeach
+        </select>
+        <p class="block mb-2 text-sm font-medium text-gray-900">Job Type</p>
+        <input class="hidden" type="text" name="section[1][key]" value="job_type">
+        <select name="section[1][value]" id="section[1][value]" class=" border border-gray-300 text-gray-900 text-sm rounded-2xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " required autocomplete="option">
+            <option value="" disabled selected>Choose contract type</option>
+            @foreach ($jobTypes as $item)
+                <option value="{{$item}}">{{$item}}</option>
+            @endforeach
+        </select>
+        <p class="block mb-2 text-sm font-medium text-gray-900">Level of study</p>
+        <input class="hidden" type="text" name="section[2][key]" value="study_level">
+        <select name="section[2][value]" id="section[2][value]" class=" border border-gray-300 text-gray-900 text-sm rounded-2xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " required autocomplete="option">
+            <option value="" disabled selected>Choose contract type</option>
+            @foreach ($educationLevels as $item)
+                <option value="{{$item}}">{{$item}}</option>
+            @endforeach
+        </select>
+        `;
+    }
+
+    function serviceAdditionalInfo() {
+        postExtraInfo.innerHTML = `
+        <div>
+            <p class="block mb-2 text-sm font-medium text-gray-900">Job Type</p>
+            <input class="hidden" type="text" name="section[0][key]" value="job_type">
+            <input type="text" name="section[0][value]" id="section[0][value]" class=" border border-gray-300 text-gray-900 text-sm rounded-2xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="job type" value="freelance" disabled>
+        </div>
+        <div>
+            <p class="block mb-2 text-sm font-medium text-gray-900">Price MAD</p>
+            <input class="hidden" type="text" name="section[1][key]" value="price">
+            <input type="number" name="section[1][value]" id="section[1][value]" class=" border border-gray-300 text-gray-900 text-sm rounded-2xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="0.00 MAD">
+        </div>
+        `;
+    }
 
 });
 

@@ -27,8 +27,14 @@ class AppServiceProvider extends ServiceProvider
                 'users' => \App\Models\User::all(),
                 'posts' => \App\Models\Post::all(),
                 'applications' => \App\Models\Application::all(),
-                'media' => \App\Models\Media::all()
-
+                'media' => \App\Models\Media::all(),
+                'cities' => \App\Models\City::cities(),
+                'contracts' => \App\Enums\Contract::getValues(),
+                'functions' => \App\Enums\Functions::getValues(),
+                'industries' => \App\Enums\Industries::getValues(),
+                'postTypes' => \App\Enums\PostType::getValues(),
+                'jobTypes' => \App\Enums\JobType::getValues(),
+                'educationLevels' => \App\Enums\EducationLevel::getValues(),
                 // Add other data variables here
             ]);
         });

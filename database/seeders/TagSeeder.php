@@ -14,6 +14,43 @@ class TagSeeder extends Seeder
      */
     public function run(): void
     {
-        Tag::factory(10)->create();
+        $data = [
+            ['name' => 'Experienced'],
+            ['name' => 'Junior'],
+            ['name' => 'Senior'],
+            ['name' => 'Management'],
+            ['name' => 'Executive'],
+            ['name' => 'Technical'],
+            ['name' => 'Creative'],
+            ['name' => 'Sales'],
+            ['name' => 'Marketing'],
+            ['name' => 'Engineering'],
+            ['name' => 'Design'],
+            ['name' => 'Finance'],
+            ['name' => 'Customer Service'],
+            ['name' => 'Human Resources'],
+            ['name' => 'Information Technology'],
+            ['name' => 'Healthcare'],
+            ['name' => 'Education'],
+            ['name' => 'Legal'],
+            ['name' => 'Science'],
+            ['name' => 'Research'],
+            ['name' => 'Consulting'],
+            ['name' => 'Hospitality'],
+            ['name' => 'Retail'],
+            ['name' => 'Manufacturing'],
+            ['name' => 'Transportation'],
+            ['name' => 'Logistics'],
+            ['name' => 'Construction'],
+            ['name' => 'Real Estate'],
+            ['name' => 'Media'],
+            ['name' => 'Entertainment'],
+            ['name' => 'Sports'],
+            ['name' => 'Non-profit'],
+            ['name' => 'Government'],
+        ];
+        foreach ($data as $d) {
+            Tag::create($d);
+        }
     }
 }

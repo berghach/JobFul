@@ -45,7 +45,7 @@
         @include('partials.navbar')
         {{-- @include('partials.sidebar') --}}
 
-        <section class="flex flex-col items-center md:ml-64 mt-32 p-4">
+        <section class="flex flex-col items-center mt-32 p-4">
             {{ $slot }}
         </section>
         {{-- layout.js script --}}

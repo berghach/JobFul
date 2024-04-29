@@ -1,9 +1,9 @@
 {{-- <div>
     <!-- Do what you can, with what you have, where you are. - Theodore Roosevelt -->
 </div> --}}
-<header class="bg-white fixed top-0 left-0 right-0 z-50 h-32">
+<header class="bg-white fixed top-0 left-0 right-0 z-20">
     <!-- Desktop navbar -->
-    <nav class=" hidden mx-auto lg:flex max-w-full items-center justify-between px-6 pt-6 " aria-label="Global">
+    <nav class=" hidden mx-auto lg:flex max-w-full h-32 items-center justify-between px-6 py-2 " aria-label="Global">
         <div class="flex items-center gap-x-5">
             <a href={{ route('home') }} class="m-1.5 p-1.5">
                 <img class="h-9 w-auto" src={{ Vite::asset('resources/images/logo-green.png') }} alt="">
@@ -81,7 +81,9 @@
                 <div class="inline-flex items-center gap-x-3 px-3 py-1.5">
                     <i id="mobile-search-trigger"
                         data-feather="search"></i>
-                    <i data-feather="plus-circle"></i>
+                    <button type="button" onclick="togglePostForm()">
+                        <i data-feather="plus-circle"></i>
+                    </button>
                 </div>
             </div>
             <div class="w-full flex justify-around items-center py-2">
@@ -113,7 +115,7 @@
                     <span class=" sr-only">Profil</span>
                 </button>
             </div>
-            <ul id="profile-dropdown-mobile" class=" w-full flex justify-around p-4 gap-2 border-t-[1px] border-opacity-15 border-t-gray-500 hidden">
+            <ul id="profile-dropdown-mobile" class=" w-full flex justify-around p-4 gap-2 bg-white border-t-[1px] border-opacity-15 border-t-gray-500 hidden">
                 <li>
                     <a class="inline-flex gap-x-2" href="">
                         <i data-feather="user"></i>My profile</a>

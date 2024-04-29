@@ -52,7 +52,7 @@
                 <h1 class="font-large font-semibold text-md text-gray-700">{{__('Company links')}}</h1>
                 <div id="links-container" class="flex flex-col gap-1">
                     <div id="links[0]" class="inline-flex items-center gap-1">
-                        <input id="links[0][url]" type="text" name="links[0][url]" class="block mt-1 w-full h-10 ps-3 border-gray-300 border-2 rounded-xl shadow-sm"  placeholder="Link 1"/>
+                        <input id="links[0][url]" type="url" name="links[0][url]" class="block mt-1 w-full h-10 ps-3 border-gray-300 border-2 rounded-xl shadow-sm"  placeholder="Link 1"/>
                     </div>
                 </div>
                 <x-secondary-button type="button" onclick="addLink()" class=" inline-flex w-10 h-10 p-1 items-center justify-center">

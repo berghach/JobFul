@@ -12,4 +12,7 @@
         @csrf
         <button type="submit">Logout</button>
     </form>
+    @foreach ($collection = App\Enums\PostType::getValues() as $item)
+        <div>{{$item}}</div>
+    @endforeach
 </x-layout>

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class City extends Model
 {
     use HasFactory;
-    public function cities(){
+    public static function cities(){
         // API endpoint
         $apiEndpoint = 'https://madina.ysnirix.xyz/api/cities?format=json';
 
