@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -43,9 +44,9 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function images(): MorphMany
+    public function image(): MorphOne
     {
-        return $this->morphMany(Media::class, 'mediable')->where('type', 'image');
+        return $this->morphOne(Media::class, 'mediable')->where('type', 'image');
     }
     public function documents(): MorphMany
     {

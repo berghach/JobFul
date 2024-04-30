@@ -48,6 +48,12 @@ class TagSeeder extends Seeder
             ['name' => 'Sports'],
             ['name' => 'Non-profit'],
             ['name' => 'Government'],
+            ['name' => 'IT'],
+            ['name' => 'WEB'],
+            ['name' => 'SEO'],
+            ['name' => 'FREELANCE'],
+            ['name' => 'LANGUAGES'],
+            ['name' => 'EMPLOYMENT'],
         ];
         foreach ($data as $d) {
             Tag::create($d);
