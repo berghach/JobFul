@@ -76,7 +76,7 @@
                             </select>
                         </div>
                         <div id="post-extra-info" class="col-span-2 flex flex-col gap-4">
-                            {{-- Post extra info --}}
+                            {{-- postExtraInfo() --}}
                         </div>
                     </div>
                     <div class="flex justify-end">
@@ -91,10 +91,10 @@
     </div>
     
     {{-- Recent posts --}}
-    <div id="posts-container" class=" grid grid-cols-4 w-full gap-3 justify-center pt-3">
+    <div id="posts-container" class=" grid grid-cols-1 lg:grid-cols-4 w-full gap-3 justify-center pt-3">
         @foreach ($posts as $item)
             <a href="#" class="flex flex-col items-center w-full bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">
-                <img class=" w-full rounded-t-lg" src={{$item->image ? $item->image : Vite::asset('resources/images/website-id.png')}} alt="">
+                <img class=" w-full rounded-t-lg" src={{$item->image() ? Vite::asset($item->image()->first()->path) : Vite::asset('resources\images\profil_placeholder.png')}} alt="">
                 <div class="flex flex-col justify-between p-4 leading-normal">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{$item->title}}</h5>
                     <p class="mb-3 font-normal text-gray-700">{{$item->post_type}}</p>
