@@ -30,9 +30,10 @@ class StorePostRequest extends FormRequest
             'industry' => ['required', 'string', 'max:255'],
             'function' => ['required', 'string', 'max:255'],
             'location' => ['required', 'string', 'max:255'],
-            'section' => ['nullable', 'array'],
-            'section.*.key' => ['required_with:section', 'string'],
-            'section.*.value' => ['required_with:section', 'numeric'],
+            'contract' => ['nullable', 'string', 'max:255'],
+            'job_type' => ['nullable', 'string', 'max:255'],
+            'study_level' => ['nullable', 'string', 'max:255'],
+            'price' => ['nullable', 'numeric', 'max:255'],
         ];
     }
     /**

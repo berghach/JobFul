@@ -98,6 +98,14 @@
                 <div class="flex flex-col justify-between p-4 leading-normal">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{$item->title}}</h5>
                     <p class="mb-3 font-normal text-gray-700">{{$item->post_type}}</p>
+                    <p class="mb-3 font-normal text-gray-700">{{$item->location}}</p>
+                    @php 
+                        $sections = json_decode($item->sections, true);
+
+                        $jobType = isset($sections['job_type']) ? $sections['job_type'] : 'N/A';
+                        $price = isset($sections['price']) ? $sections['price'] : 'N/A';
+                        echo '<p class="mb-3 font-normal text-gray-700">"'.$sections['job_type'].'" - "'.$sections['price'].'"</p>';
+                    @endphp
                 </div> 
             </a>
         @endforeach

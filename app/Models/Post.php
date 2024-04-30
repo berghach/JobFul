@@ -22,15 +22,12 @@ class Post extends Model
         'industry',
         'function',
         'location',
-        'section',
+        'contract',
+        'job_type',
+        'study_level',
+        'price',
         'user_id',
     ];
-    protected function casts(): array
-    {
-        return [
-            'sections' => AsArrayObject::class
-        ];
-    }
 
     public function applications(): HasMany
     {

@@ -12,9 +12,11 @@ function removeLink(linkNum) {
     }
 }
 
+// Function to handle post form visibility
 function togglePostForm() {
     const crudModalPost = document.getElementById('crud-modal-post');
     crudModalPost.classList.toggle('hidden');
+    document.getElementsByTagName('body')[0].classList.toggle('overflow-hidden');
 }
 
 
@@ -105,9 +107,8 @@ document.addEventListener('DOMContentLoaded', function () {
     function jobAdditionalInfo() {
         postExtraInfo.innerHTML = `
         <div>
-            <p class="block mb-2 text-sm font-medium text-gray-900">Contract</p>
-            <input class="hidden" type="text" name="section[0][key]" value="contract">
-            <select name="section[0][value]" id="section[0][value]" class=" border border-gray-300 text-gray-900 text-sm rounded-2xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " required autocomplete="option">
+            <label for="contract" class="block mb-2 text-sm font-medium text-gray-900">Contract</label>
+            <select name="contract" id="contract" class=" border border-gray-300 text-gray-900 text-sm rounded-2xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " required autocomplete="option">
                 <option value="" disabled selected>Choose contract type</option>
                 <option value="internship">internship</option>
                 <option value="CDD">CDD</option>
@@ -115,9 +116,8 @@ document.addEventListener('DOMContentLoaded', function () {
             </select>
         </div>
         <div>
-            <p class="block mb-2 text-sm font-medium text-gray-900">Job Type</p>
-            <input class="hidden" type="text" name="section[1][key]" value="job_type">
-            <select name="section[1][value]" id="section[1][value]" class=" border border-gray-300 text-gray-900 text-sm rounded-2xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " required autocomplete="option">
+            <label for="job_type" class="block mb-2 text-sm font-medium text-gray-900">Job Type</label>
+            <select name="job_type" id="job_type" class=" border border-gray-300 text-gray-900 text-sm rounded-2xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " required autocomplete="option">
                 <option value="" disabled selected>Choose job type</option>
                 <option value="part time">Part time</option>
                 <option value="full time">Full time</option>
@@ -128,15 +128,14 @@ document.addEventListener('DOMContentLoaded', function () {
             </select>
         </div>
         <div>
-            <p class="block mb-2 text-sm font-medium text-gray-900">Level of study</p>
-            <input class="hidden" type="text" name="section[2][key]" value="study_level">
-            <select name="section[2][value]" id="section[2][value]" class=" border border-gray-300 text-gray-900 text-sm rounded-2xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " required autocomplete="option">
+            <label for="study_level" class="block mb-2 text-sm font-medium text-gray-900">Level of study</label>
+            <select name="study_level" id="study_level" class=" border border-gray-300 text-gray-900 text-sm rounded-2xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " required autocomplete="option">
                 <option value="" disabled selected>Choose level of study</option>
                 <option value="Baccalaurate">Baccalaurate</option>
-                <option value="Bac plus 2">Bac plus 2</option>
-                <option value="Bac plus 3">Bac plus 3</option>
-                <option value="Bac plus 4">Bac plus 4</option>
-                <option value="Bac plus 5">Bac plus 5</option>
+                <option value="Bac+2">Bac plus 2</option>
+                <option value="Bac+3">Bac plus 3</option>
+                <option value="Bac+4">Bac plus 4</option>
+                <option value="Bac+5">Bac plus 5</option>
                 <option value="Not important">Not important</option>
             </select>
         </div>
@@ -146,14 +145,12 @@ document.addEventListener('DOMContentLoaded', function () {
     function serviceAdditionalInfo() {
         postExtraInfo.innerHTML = `
         <div>
-            <p class="block mb-2 text-sm font-medium text-gray-900">Job Type</p>
-            <input class="hidden" type="text" name="section[0][key]" value="job_type">
-            <input type="text" name="section[0][value]" id="section[0][value]" class=" border border-gray-300 text-gray-900 text-sm rounded-2xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="job type" value="freelance" disabled>
+            <label for="job_type" class="block mb-2 text-sm font-medium text-gray-900">Job Type</label>
+            <input type="text" name="job_type" id="job_type" class=" border border-gray-300 text-gray-900 text-sm rounded-2xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="job type" value="freelance" disabled>
         </div>
         <div>
-            <p class="block mb-2 text-sm font-medium text-gray-900">Price MAD</p>
-            <input class="hidden" type="text" name="section[1][key]" value="price">
-            <input type="number" name="section[1][value]" id="section[1][value]" class=" border border-gray-300 text-gray-900 text-sm rounded-2xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="0.00 MAD">
+            <label for="" class="block mb-2 text-sm font-medium text-gray-900">Price MAD</label>
+            <input type="number" name="price" id="price" class=" border border-gray-300 text-gray-900 text-sm rounded-2xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 " placeholder="0.00 MAD">
         </div>
         `;
     }

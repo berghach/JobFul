@@ -42,6 +42,27 @@ class PostSeeder extends Seeder
         foreach ($users as $user) {
             $userIds[] = $user->id;
         }
+        $contracts = [
+            'Internship',
+            'CDD',
+            'CDI',
+        ];
+        $jobTypes = [
+            'Part Time',
+            'Full Time',
+            'Freelance',
+            'Remote',
+            'Hybrid',
+            'On site',
+        ];
+        $studyLevels = [
+            'Not important',
+            'Baccalaurate',
+            'Bac+2',
+            'Bac+3',
+            'Bac+4',
+            'Bac+5',
+        ];
         $datas = [
             [
                 'post_type' => 'job request',
@@ -50,7 +71,9 @@ class PostSeeder extends Seeder
                 'industry' => Industries::INDUSTRY_ENGINEERING_ENERGY,
                 'function' => Functions::IT_DEVELOPMENT,
                 'location' => $cities[array_rand($cities)],
-                'sections' => json_encode(['contract' => Contract::Internship, 'job_type' => JobType::PartTime, 'study_level' => EducationLevel::BAC_PLUS_4]),
+                'contract' => $contracts[array_rand($contracts)], 
+                'job_type' => $jobTypes[array_rand($jobTypes)], 
+                'study_level' => $studyLevels[array_rand($studyLevels)],
                 'user_id' => $contractorIds[array_rand($contractorIds)],
             ],
             [
@@ -60,7 +83,9 @@ class PostSeeder extends Seeder
                 'industry' => Industries::IT_MULTIMEDIA_INTERNET,
                 'function' => Functions::IT_INFORMATION_SYSTEMS,
                 'location' => $cities[array_rand($cities)],
-                'sections' => json_encode(['contract' => Contract::CDI, 'job_type' => JobType::Remote, 'study_level' => EducationLevel::BAC_PLUS_3]),
+                'contract' => $contracts[array_rand($contracts)], 
+                'job_type' => $jobTypes[array_rand($jobTypes)], 
+                'study_level' => $studyLevels[array_rand($studyLevels)],
                 'user_id' => $contractorIds[array_rand($contractorIds)],
             ],
             [
@@ -70,7 +95,9 @@ class PostSeeder extends Seeder
                 'industry' => Industries::MARKETING_COMMUNICATION_ADVERTISING_PR,
                 'function' => Functions::MARKETING_COMMUNICATION,
                 'location' => $cities[array_rand($cities)],
-                'sections' => json_encode(['contract' => Contract::CDI, 'job_type' => JobType::Hybrid, 'study_level' => EducationLevel::BAC_PLUS_5]),
+                'contract' => $contracts[array_rand($contracts)], 
+                'job_type' => $jobTypes[array_rand($jobTypes)], 
+                'study_level' => $studyLevels[array_rand($studyLevels)],
                 'user_id' => $contractorIds[array_rand($contractorIds)],
             ],
             [
@@ -80,7 +107,9 @@ class PostSeeder extends Seeder
                 'industry' => Industries::IT_MULTIMEDIA_INTERNET,
                 'function' => Functions::IT_WEBDESIGN_GRAPHICS,
                 'location' => $cities[array_rand($cities)],
-                'sections' => json_encode(['contract' => Contract::CDD, 'job_type' => JobType::OnSite, 'study_level' => EducationLevel::BAC_PLUS_3]),
+                'contract' => $contracts[array_rand($contracts)], 
+                'job_type' => $jobTypes[array_rand($jobTypes)], 
+                'study_level' => $studyLevels[array_rand($studyLevels)],
                 'user_id' => $contractorIds[array_rand($contractorIds)],
             ],
             [
@@ -90,7 +119,9 @@ class PostSeeder extends Seeder
                 'industry' => Industries::HUMAN_RESOURCES_RECRUITMENT_TEMPORARY_WORK,
                 'function' => Functions::HR_PERSONNEL_TRAINING,
                 'location' => $cities[array_rand($cities)],
-                'sections' => json_encode(['contract' => Contract::CDI, 'job_type' => JobType::FullTime, 'study_level' => EducationLevel::BAC_PLUS_5]),
+                'contract' => $contracts[array_rand($contracts)], 
+                'job_type' => $jobTypes[array_rand($jobTypes)], 
+                'study_level' => $studyLevels[array_rand($studyLevels)],
                 'user_id' => $contractorIds[array_rand($contractorIds)],
             ],
             [
@@ -100,7 +131,9 @@ class PostSeeder extends Seeder
                 'industry' => Industries::IT_MULTIMEDIA_INTERNET,
                 'function' => Functions::IT_DEVELOPMENT,
                 'location' => $cities[array_rand($cities)],
-                'sections' => json_encode(['contract' => Contract::CDI, 'job_type' => JobType::FullTime, 'study_level' => EducationLevel::BAC_PLUS_4]),
+                'contract' => $contracts[array_rand($contracts)], 
+                'job_type' => $jobTypes[array_rand($jobTypes)], 
+                'study_level' => $studyLevels[array_rand($studyLevels)],
                 'user_id' => $operatorIds[array_rand($operatorIds)],
             ],
             [
@@ -110,7 +143,9 @@ class PostSeeder extends Seeder
                 'industry' => Industries::MARKETING_COMMUNICATION_ADVERTISING_PR,
                 'function' => Functions::MARKETING_COMMUNICATION,
                 'location' => $cities[array_rand($cities)],
-                'sections' => json_encode(['contract' => Contract::CDI, 'job_type' => JobType::FullTime, 'study_level' => EducationLevel::BAC_PLUS_4]),
+                'contract' => $contracts[array_rand($contracts)], 
+                'job_type' => $jobTypes[array_rand($jobTypes)], 
+                'study_level' => $studyLevels[array_rand($studyLevels)],
                 'user_id' => $operatorIds[array_rand($operatorIds)],
             ],
             [
@@ -120,7 +155,9 @@ class PostSeeder extends Seeder
                 'industry' => Industries::IT_MULTIMEDIA_INTERNET,
                 'function' => Functions::IT_WEBDESIGN_GRAPHICS,
                 'location' => $cities[array_rand($cities)],
-                'sections' => json_encode(['contract' => Contract::CDI, 'job_type' => JobType::Hybrid, 'study_level' => EducationLevel::BAC_PLUS_5]),
+                'contract' => $contracts[array_rand($contracts)], 
+                'job_type' => $jobTypes[array_rand($jobTypes)], 
+                'study_level' => $studyLevels[array_rand($studyLevels)],
                 'user_id' => $operatorIds[array_rand($operatorIds)],
             ],
             [
@@ -130,7 +167,9 @@ class PostSeeder extends Seeder
                 'industry' => Industries::IT_MULTIMEDIA_INTERNET,
                 'function' => Functions::IT_INFORMATION_SYSTEMS,
                 'location' => $cities[array_rand($cities)],
-                'sections' => json_encode(['contract' => Contract::CDI, 'job_type' => JobType::OnSite, 'study_level' => EducationLevel::BAC_PLUS_3]),
+                'contract' => $contracts[array_rand($contracts)], 
+                'job_type' => $jobTypes[array_rand($jobTypes)], 
+                'study_level' => $studyLevels[array_rand($studyLevels)],
                 'user_id' => $operatorIds[array_rand($operatorIds)],
             ],
             [
@@ -140,7 +179,9 @@ class PostSeeder extends Seeder
                 'industry' => Industries::IT_MULTIMEDIA_INTERNET,
                 'function' => Functions::IT_INFORMATION_SYSTEMS,
                 'location' => $cities[array_rand($cities)],
-                'sections' => json_encode(['contract' => Contract::CDD, 'job_type' => JobType::Hybrid, 'study_level' => EducationLevel::BAC_PLUS_5]),
+                'contract' => $contracts[array_rand($contracts)], 
+                'job_type' => $jobTypes[array_rand($jobTypes)], 
+                'study_level' => $studyLevels[array_rand($studyLevels)],
                 'user_id' => $operatorIds[array_rand($operatorIds)],
             ],
             [
@@ -150,7 +191,8 @@ class PostSeeder extends Seeder
                 'industry' => Industries::MARKETING_COMMUNICATION_ADVERTISING_PR,
                 'function' => Functions::IT_WEBDESIGN_GRAPHICS,
                 'location' => $cities[array_rand($cities)],
-                'sections' => json_encode(['job_type' => 'freelance', 'price' => 199.9]),
+                'job_type' => 'Freelance',
+                'price' => 199.9,
                 'user_id' => $operatorIds[array_rand($operatorIds)],
             ],
             [
@@ -160,7 +202,8 @@ class PostSeeder extends Seeder
                 'industry' => Industries::MARKETING_COMMUNICATION_ADVERTISING_PR,
                 'function' => Functions::MARKETING_COMMUNICATION,
                 'location' => $cities[array_rand($cities)],
-                'sections' => json_encode(['job_type' => 'freelance', 'price' => 350]),
+                'job_type' => 'Freelance',
+                 'price' => 350,
                 'user_id' => $operatorIds[array_rand($operatorIds)],
             ],
             [
@@ -170,7 +213,8 @@ class PostSeeder extends Seeder
                 'industry' => Industries::MARKETING_COMMUNICATION_ADVERTISING_PR,
                 'function' => Functions::MARKETING_COMMUNICATION,
                 'location' => $cities[array_rand($cities)],
-                'sections' => json_encode(['job_type' => 'freelance', 'price' => null]),
+                'job_type' => 'Freelance',
+                 'price' => null,
                 'user_id' => $userIds[array_rand($userIds)],
             ],
             [
@@ -180,7 +224,8 @@ class PostSeeder extends Seeder
                 'industry' => Industries::MARKETING_COMMUNICATION_ADVERTISING_PR,
                 'function' => Functions::MARKETING_COMMUNICATION,
                 'location' => $cities[array_rand($cities)],
-                'sections' => json_encode(['job_type' => 'freelance', 'price' => null]),
+                'job_type' => 'Freelance',
+                 'price' => null,
                 'user_id' => $userIds[array_rand($userIds)],
             ],
             [
@@ -190,7 +235,8 @@ class PostSeeder extends Seeder
                 'industry' => Industries::BUSINESS_IMPORT_EXPORT,
                 'function' => Functions::IMPORT_EXPORT,
                 'location' => $cities[array_rand($cities)],
-                'sections' => json_encode(['job_type' => 'freelance', 'price' => 79.99]),
+                'job_type' => 'Freelance',
+                 'price' => 79.99,
                 'user_id' => $userIds[array_rand($userIds)],
             ],
             [
@@ -200,7 +246,8 @@ class PostSeeder extends Seeder
                 'industry' => Industries::IT_MULTIMEDIA_INTERNET,
                 'function' => Functions::IT_WEBDESIGN_GRAPHICS,
                 'location' => $cities[array_rand($cities)],
-                'sections' => json_encode(['job_type' => 'freelance', 'price' => 100]),
+                'job_type' => 'Freelance',
+                 'price' => 100,
                 'user_id' => $freelancerIds[array_rand($freelancerIds)],
             ],
             [
@@ -210,7 +257,8 @@ class PostSeeder extends Seeder
                 'industry' => Industries::IT_MULTIMEDIA_INTERNET,
                 'function' => Functions::IT_DEVELOPMENT,
                 'location' => $cities[array_rand($cities)],
-                'sections' => json_encode(['job_type' => 'freelance', 'price' => 1000]),
+                'job_type' => 'Freelance',
+                 'price' => 1000,
                 'user_id' => $freelancerIds[array_rand($freelancerIds)],
             ],
             [
@@ -220,7 +268,8 @@ class PostSeeder extends Seeder
                 'industry' => Industries::MARKETING_COMMUNICATION_ADVERTISING_PR,
                 'function' => Functions::MARKETING_COMMUNICATION,
                 'location' => $cities[array_rand($cities)],
-                'sections' => json_encode(['job_type' => 'freelance', 'price' => 899.99]),
+                'job_type' => 'Freelance',
+                 'price' => 899.99,
                 'user_id' => $freelancerIds[array_rand($freelancerIds)],
             ],
             [
@@ -230,7 +279,8 @@ class PostSeeder extends Seeder
                 'industry' => Industries::MARKETING_COMMUNICATION_ADVERTISING_PR,
                 'function' => Functions::MARKETING_COMMUNICATION,
                 'location' => $cities[array_rand($cities)],
-                'sections' => json_encode(['job_type' => 'freelance', 'price' => null]),
+                'job_type' => 'Freelance',
+                 'price' => null,
                 'user_id' => $freelancerIds[array_rand($freelancerIds)],
             ],
             [
@@ -240,14 +290,15 @@ class PostSeeder extends Seeder
                 'industry' => Industries::MARKETING_COMMUNICATION_ADVERTISING_PR,
                 'function' => Functions::MARKETING_COMMUNICATION,
                 'location' => $cities[array_rand($cities)],
-                'sections' => json_encode(['job_type' => 'freelance', 'price' => null]),
+                'job_type' => 'Freelance',
+                 'price' => null,
                 'user_id' => $freelancerIds[array_rand($freelancerIds)],
             ],
         ];
 
         foreach ($datas as $d) {
             $post = Post::create($d);
-            $post->tags()->attach(($post->post_type == 'service offer' || $post->post_type == 'service request') ? Tag::where('name', 'FREELANCE')->first() : Tag::where('name', 'EMPLOYMENT')->first());
+            $post->tags()->attach(($post->post_type == 'service offer' || $post->post_type == 'service request') ? Tag::where('name', 'Freelance')->first() : Tag::where('name', 'EMPLOYMENT')->first());
             $post->image()->create(['type' => 'image', 'path' => 'resources\images\website-id.png']);
         }
         
