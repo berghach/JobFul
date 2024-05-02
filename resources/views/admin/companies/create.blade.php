@@ -1,5 +1,4 @@
 <x-layout title="Add Company">
-    @include('partials.sidebar')
     <div class="w-full sm:max-w-md mt-3 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-3xl">
         <form method="POST" action="{{ route('company.store') }}" class="flex flex-col gap-3" enctype="multipart/form-data">
             @csrf

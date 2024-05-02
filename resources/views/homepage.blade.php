@@ -2,7 +2,7 @@
 <x-layout title="Homepage">
     <div class=" max-md:hidden flex flex-row gap-4 w-1/2 items-center">
         <a href="#" class=" flex flex-col h-11 w-11 items-center">
-            <img class="inline-block rounded-full ring-2 ring-white" src={{ Auth::user()->images->first() ? Auth::user()->images->where('name', 'profil')->url : Vite::asset('resources/images/profil_placeholder.png') }} alt="">
+            <img class="inline-block rounded-full ring-2 ring-white h-11 w-11" src={{ Auth::user()->image ? Vite::asset(Auth::user()->image()->first()->path) : Vite::asset('resources/images/profil_placeholder.png') }} alt="">
         </a>
         <div class=" bg-white rounded-2xl h-14 w-full">
             <button type="button" class="w-full h-full text-start text-gray-500 rounded-2xl px-4" onclick="togglePostForm()">Post here...</button>
@@ -93,20 +93,18 @@
     {{-- Recent posts --}}
     <div id="posts-container" class=" grid grid-cols-1 lg:grid-cols-4 w-full gap-3 justify-center pt-3">
         @foreach ($posts as $item)
-            <a href="#" class="flex flex-col items-center w-full bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">
-                <img class=" w-full rounded-t-lg" src={{$item->image() ? Vite::asset($item->image()->first()->path) : Vite::asset('resources\images\profil_placeholder.png')}} alt="">
+            <a href="#" class="flex flex-col w-full bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">
+                <img class=" w-full rounded-t-lg" src={{$item->image ? Vite::asset($item->image()->first()->path) : Vite::asset('resources\images\profil_placeholder.png')}} alt="">
                 <div class="flex flex-col justify-between p-4 leading-normal">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{$item->title}}</h5>
-                    <p class="mb-3 font-normal text-gray-700">{{$item->post_type}}</p>
-                    <p class="mb-3 font-normal text-gray-700">{{$item->location}}</p>
-                    @php 
-                        $sections = json_decode($item->sections, true);
-
-                        $jobType = isset($sections['job_type']) ? $sections['job_type'] : 'N/A';
-                        $price = isset($sections['price']) ? $sections['price'] : 'N/A';
-                        echo '<p class="mb-3 font-normal text-gray-700">"'.$sections['job_type'].'" - "'.$sections['price'].'"</p>';
-                    @endphp
+                    <h5 class="mb-1 h-16 text-2xl font-bold tracking-tight text-gray-900">{{$item->title}}</h5>
+                    <p class="mb-1 font-normal text-gray-700">{{$item->post_type}}</p>
+                    <p class="mb-1 font-normal text-gray-700">{{$item->location}}</p>
+                    <p class="mb-1 font-thin text-gray-700">{{$item->created_at->diffForHumans()}}</p>
                 </div> 
+                <div class="flex justify-end items-center pe-4 pb-4">
+                    <p>more</p>
+                    <i data-feather="arrow-right"></i>
+                </div>
             </a>
         @endforeach
     </div>

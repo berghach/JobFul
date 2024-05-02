@@ -14,8 +14,6 @@ return new class extends Migration
         Schema::create('applications', function (Blueprint $table) { // an application belongs to one employee and one post 
             $table->id();
             $table->text('message');
-            $table->jsonb('files')->nullable();
-            $table->jsonb('sections')->nullable();
             $table->foreignId('user_id')->constrained('users', 'id')->cascadeOnDelete();
             $table->foreignId('post_id')->constrained('posts', 'id')->cascadeOnDelete();
             $table->timestamps();

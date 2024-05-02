@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('industry');
             $table->string('bio');
             $table->string('headquarter');
-            $table->jsonb('links')->nullable();
             $table->string('logo')->nullable();// path to logo image
             $table->timestamps();
         });

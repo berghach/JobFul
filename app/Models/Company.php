@@ -21,15 +21,14 @@ class Company extends User
         'links',
         'logo',
     ];
-    protected function casts(): array
-    {
-        return [
-            'links' => AsArrayObject::class
-        ];
-    }
+    
 
     public function operators(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'company_operators', 'company_id', 'operator_id');
+    }
+    public function links(): MorphToMany
+    {
+        return $this->morphToMany(Link::class, 'linkable');
     }
 }

@@ -6,17 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Media extends Model
+class Link extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'path',
-        'type',
-        'mediable_id',
-        'mediable_type',
+        'label',
+        'url',
     ];
 
-    public function mediable(): MorphTo
+    public function linkable(): MorphTo
     {
         return $this->morphTo();
     }

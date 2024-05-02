@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Post extends Model
@@ -45,8 +46,8 @@ class Post extends Model
     {
         return $this->morphOne(Media::class, 'mediable')->where('type', 'image');
     }
-    public function documents(): MorphMany
+    public function links(): MorphToMany
     {
-        return $this->morphMany(Media::class, 'mediable')->where('type', 'document');
+        return $this->morphToMany(Link::class, 'linkable');
     }
 }

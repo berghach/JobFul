@@ -25,14 +25,11 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('phone')->nullable();
-            $table->jsonb('links')->nullable();
             $table->string('industry')->nullable();
             $table->string('bio')->nullable();
             $table->string('location')->nullable();
             $table->string('job')->nullable();
             $table->enum('talent_type', ['freelancer', 'contractor'])->nullable();
-            // $table->foreignId('company_id')->constrained('companies', 'id')->cascadeOnDelete();
-            $table->jsonb('sections')->nullable();// for user additional information
             $table->boolean('isVerified')->default(true);
             $table->foreignId('role_id')->constrained('roles', 'id')->cascadeOnDelete();
             $table->rememberToken();

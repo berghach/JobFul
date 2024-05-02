@@ -34,16 +34,14 @@
                 font-weight: 800;
                 font-style: normal;
             }
-
-            li {
-                /* border: 2px solid red; */
-            }
         </style>
     </head>
     <body class=" bg-home">
 
         @include('partials.navbar')
-        {{-- @include('partials.sidebar') --}}
+        @if ((Auth::user()->role->name === 'admin' || Auth::user()->role->name === 'operator') && !request()->routeIs('home'))
+            @include('partials.sidebar')
+        @endif
 
         <section class="flex flex-col items-center mt-32 p-4">
             {{ $slot }}

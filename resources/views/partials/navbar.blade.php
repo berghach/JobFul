@@ -46,7 +46,7 @@
             </div>
             <div class=" flex flex-col items-center">
                 <a href="#" class=" flex flex-col items-center">
-                    <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white" src={{ Auth::user()->images->first() ? Auth::user()->images->where('name', 'profil')->url : Vite::asset('resources/images/profil_placeholder.png') }} alt="">
+                    <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white" src={{ Auth::user()->image ? Vite::asset(Auth::user()->image()->first()->path) : Vite::asset('resources/images/profil_placeholder.png') }} alt="">
                 </a>
                 <div class=" inline-flex items-center gap-x-1 px-3 py-1.5 text-lg text-secondary ">
                     <h1 class=" inline-flex ">{{ explode(' ',Auth::user()->name)[0] }}</h1> {{-- to display only the first name --}}
@@ -111,7 +111,7 @@
                     <span class=" sr-only">Notifications</span>
                 </a>
                 <button onclick="toggleProfileDropdownMobile()" class="text-md flex flex-col rounded-full focus:ring-primary focus:ring-4 items-center align-middle gap-y-2 font-semibold leading-6 text-secondary">
-                    <img class="inline-block h-7 w-7 rounded-full ring-2 ring-white" src={{ Auth::user()->images->first() ? Auth::user()->images->where('name', 'profil')->url : Vite::asset('resources/images/profil_placeholder.png') }} alt="">
+                    <img class="inline-block h-7 w-7 rounded-full ring-2 ring-white" src={{ Auth::user()->image ? Vite::asset(Auth::user()->image()->first()->path) : Vite::asset('resources/images/profil_placeholder.png') }} alt="">
                     <span class=" sr-only">Profil</span>
                 </button>
             </div>

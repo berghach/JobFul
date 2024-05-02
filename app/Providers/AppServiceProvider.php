@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Support\Facades\Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,10 +24,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*', function ($view) {
             $view->with([
                 'tags' => \App\Models\Tag::all(),
-                'companies' => \App\Models\Company::all(),
-                'users' => \App\Models\User::all(),
                 'posts' => \App\Models\Post::all(),
-                'applications' => \App\Models\Application::all(),
                 'media' => \App\Models\Media::all(),
                 'cities' => \App\Models\City::cities(),
                 'functions' => \App\Enums\Functions::getValues(),
@@ -37,7 +35,15 @@ class AppServiceProvider extends ServiceProvider
         });
         view()->composer('admin.*', function ($view) {
             $view->with([
-                // 'companies' => \App\Models\Company::all()
+                'applications' => \App\Models\Application::all(),
+                'companies' => \App\Models\Company::all(),
+                'users' => \App\Models\User::all(),
+                // Add other data variables here
+            ]);
+        });
+        view()->composer('operator.*', function ($view) {
+            $view->with([
+                'posts' => \App\Models\Post::where('user_id', Auth::id())->get(),
             ]);
         });
 
@@ -48,7 +54,8 @@ class AppServiceProvider extends ServiceProvider
             'post' => \App\Models\Post::class,
             'application' => \App\Models\Application::class,
             'tag' => \App\Models\Tag::class,
-            'media' => \App\Models\Media::class
+            'media' => \App\Models\Media::class,
+            'link' => \App\Models\Link::class,
         ]);
     }
 }

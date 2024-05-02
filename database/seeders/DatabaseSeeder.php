@@ -21,11 +21,14 @@ class DatabaseSeeder extends Seeder
         
         $this->call(CompanySeeder::class);
         
-        User::factory()->create([
+        $admin = User::factory()->create([
             'name' => 'Admin User',
             'email' => 'admin@example.com',
             'role_id' => 1,
         ]);
+
+        $admin->image()->create(['type' => 'image','path' => 'resources\images\admin-profil.png']);
+        
         User::factory()->create([
             'name' => 'Freelancer User',
             'email' => 'freelancer@example.com',

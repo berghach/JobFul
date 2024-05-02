@@ -24,6 +24,7 @@ return new class extends Migration
             $table->enum('job_type', ['Part Time', 'Full Time', 'Freelance', 'Remote', 'Hybrid', 'On site'])->nullable();
             $table->enum('study_level', ['Not important', 'Baccalaurate', 'Bac+2', 'Bac+3', 'Bac+4', 'Bac+5'])->nullable();
             $table->float('price')->nullable();
+            $table->timestamp('deadline')->nullable();
             $table->foreignId('user_id')->constrained('users', 'id')->cascadeOnDelete();
             $table->timestamps();
         });
