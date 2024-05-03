@@ -51,7 +51,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'chemseddine@example.com',
             'role_id' => 4,
         ]);
-        User::factory(6)->create();
+        User::factory(10)->create();
 
         $operators = User::where('role_id', 3)->get();
         foreach ($operators as $operator) {

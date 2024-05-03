@@ -43,9 +43,12 @@
             @include('partials.sidebar')
         @endif
 
-        <section class="flex flex-col items-center mt-32 p-4">
-            {{ $slot }}
-        </section>
+        {{ $slot }}
+        
+        @if (request()->routeIs('home'))
+            @include('partials.footer')
+        @endif
+
         {{-- layout.js script --}}
         <script src={{ Vite::asset('resources/js/layout.js') }}></script>
         {{-- dashboard.js script --}}

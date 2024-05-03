@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*', function ($view) {
             $view->with([
                 'tags' => \App\Models\Tag::all(),
-                'posts' => \App\Models\Post::all(),
+                'posts' => \App\Models\Post::where('isValid', true)->get(),
                 'media' => \App\Models\Media::all(),
                 'cities' => \App\Models\City::cities(),
                 'functions' => \App\Enums\Functions::getValues(),
@@ -35,9 +35,12 @@ class AppServiceProvider extends ServiceProvider
         });
         view()->composer('admin.*', function ($view) {
             $view->with([
+                'posts' => \App\Models\Post::all(),
                 'applications' => \App\Models\Application::all(),
                 'companies' => \App\Models\Company::all(),
                 'users' => \App\Models\User::all(),
+                'operators' => \App\Models\User::where('role_id', 3)->get(),
+                'talents' => \App\Models\User::where('role_id', 2)->get(),
                 // Add other data variables here
             ]);
         });
@@ -57,5 +60,6 @@ class AppServiceProvider extends ServiceProvider
             'media' => \App\Models\Media::class,
             'link' => \App\Models\Link::class,
         ]);
+
     }
 }

@@ -9,6 +9,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\RegisterController;
 
 Route::middleware('auth')->group(function () {
+    // admin routes
     Route::middleware('admin')->group(function () {
         Route::get('/admin-dashboard', function () {
             return view('admin.dashboard');
@@ -20,12 +21,14 @@ Route::middleware('auth')->group(function () {
         
         // other admin routes
     });
+    // operator routes
     Route::middleware('operator')->group(function () {
         Route::get('/operator-dashboard', function () {
             return view('operator.dashboard');
         })->name('operator-dashboard');
         // other operator routes
     });
+    // common routes
     Route::get('/', function () {
         return view('homepage');
     })->name('home');

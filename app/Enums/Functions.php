@@ -18,6 +18,7 @@ final class Functions extends Enum
     const CONSTRUCTION_BTP = 'Construction - General/Second Work';
     const BUILDING_STUDIES_ARCHITECTURE = 'Building Studies/Architecture';
     const DRIVER_DELIVERY_COURIER = 'Driver/Delivery/Courier';
+    const COACH = 'Coach';
     const COMMERCIAL_TECHNICAL = 'Commercial/Technical';
     const COMMERCIAL_INDIVIDUALS_B2C = 'Commercial - Individuals (B2C)';
     const COMMERCIAL_PROFESSIONALS_B2B = 'Commercial - Professionals (B2B)';
@@ -50,5 +51,6 @@ final class Functions extends Enum
     const HR_PERSONNEL_TRAINING = 'HR/Personnel/Training';
     const HEALTH_SOCIAL = 'Health/Social';
     const CUSTOMER_SERVICE_HOTLINE_CALL_CENTER = 'Customer Service/Hotline/Call Center';
+    const OTHER = 'Other';
 
 }

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('links', function (Blueprint $table) {
             $table->id();
-            $table->string('label');
+            $table->string('label')->nullable();
             $table->string('url');
             $table->morphs('linkable');
             $table->timestamps();
