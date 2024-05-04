@@ -94,19 +94,7 @@
         {{-- Recent posts --}}
         <div id="posts-container" class=" grid grid-cols-1 lg:grid-cols-4 w-full gap-3 justify-center pt-3">
             @foreach ($posts as $item)
-                <a href="#" class="flex flex-col w-full bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">
-                    <img class=" w-full rounded-t-lg" src={{$item->image ? Vite::asset($item->image()->first()->path) : Vite::asset('resources\images\profil_placeholder.png')}} alt="">
-                    <div class="flex flex-col justify-between p-4 leading-normal">
-                        <h5 class="mb-1 h-16 text-2xl font-bold tracking-tight text-gray-900">{{$item->title}}</h5>
-                        <p class="mb-1 font-normal text-gray-700">{{$item->post_type}}</p>
-                        <p class="mb-1 font-normal text-gray-700">{{$item->location}}</p>
-                        <p class="mb-1 font-thin text-gray-700">{{$item->created_at->diffForHumans()}}</p>
-                    </div> 
-                    <div class="flex justify-end items-center pe-4 pb-4">
-                        <p>more</p>
-                        <i data-feather="arrow-right"></i>
-                    </div>
-                </a>
+                <x-post-card :item="$item" />
             @endforeach
         </div>
     </section>

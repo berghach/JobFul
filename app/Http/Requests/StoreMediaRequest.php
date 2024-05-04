@@ -23,9 +23,8 @@ class StoreMediaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string'],
-            'path' => ['required', 'file'],
             'type' => ['required', 'string'],
+            'path' => ['required', 'file'],
         ];
     }
 }

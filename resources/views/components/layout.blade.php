@@ -51,6 +51,8 @@
 
         {{-- layout.js script --}}
         <script src={{ Vite::asset('resources/js/layout.js') }}></script>
+        {{-- search script --}}
+        <script src={{ Vite::asset('resources/js/search.js') }}></script>
         {{-- dashboard.js script --}}
         <script src={{ Vite::asset('resources/js/dashboard.js') }}></script>
         {{-- feather icons package script --}}

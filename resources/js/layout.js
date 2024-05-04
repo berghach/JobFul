@@ -18,28 +18,15 @@ function togglePostForm() {
     crudModalPost.classList.toggle('hidden');
     document.getElementsByTagName('body')[0].classList.toggle('overflow-hidden');
 }
+// Function to handle mobile sidenav visibility
+function toggleSidenav(){
+    const sidenav = document.getElementById('sidenav-states');
+    sidenav.classList.toggle('hidden');
+}
 
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    const desktopSearchInput = document.querySelector('input[id="desktop-search"]');
-    const mobileSearchInput = document.querySelector('input[id="mobile-search"]');
-    // Function to handle search input changes
-    function handleSearchInputChange(inputElement) {
-        // Log the input value to the console
-        console.log(inputElement.value);
-        // Perform other search-related actions as needed
-    }
-
-    // Add event listeners for search input changes
-    desktopSearchInput.addEventListener('input', function() {
-        handleSearchInputChange(this);
-    });
-
-    mobileSearchInput.addEventListener('input', function() {
-        handleSearchInputChange(this);
-    });
-
     // Function to manage profile dropdown visibility
     const profileDropdownTrigger = document.getElementById('profile-dropdown-trigger');
     const profileDropdown = document.getElementById('profile-dropdown');
@@ -61,19 +48,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    const mobileSearchContainer = document.getElementById('mobile-search');
-    const mobileSearchTrigger = document.getElementById('mobile-search-trigger');
-    const mobileSearchClose = document.getElementById('mobile-search-close');
-
-    // Function to manage mobile search visibility
-    function toggleMobileSearch() {
-        mobileSearchContainer.classList.toggle('hidden');
-        mobileSearchInput.value = '';
-    }
-
-    // Add event listeners to manage mobile search visibility
-    mobileSearchTrigger.addEventListener('click', toggleMobileSearch);
-    mobileSearchClose.addEventListener('click', toggleMobileSearch);
 
     // Function to manage post form additional fields visibility
     const postTypeField = document.getElementById('post-type-field');
@@ -83,19 +57,15 @@ document.addEventListener('DOMContentLoaded', function () {
         switch (document.querySelector('input[name="post_type"]:checked').value) {
                 case 'job request':
                     jobAdditionalInfo();
-                    console.log('this is a job request');
                     break;
                 case 'job offer':
                     jobAdditionalInfo();
-                    console.log('this is a job offer');
                     break;
                 case 'service request':
                     serviceAdditionalInfo();
-                    console.log('this is a service request');
                     break;
                 case 'service offer':
                     serviceAdditionalInfo();
-                    console.log('this is a service offer');
                     break;
                 default:
                     console.log('choice not found');

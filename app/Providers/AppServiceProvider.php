@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        view()->composer('*', function ($view) {
+        view()->composer('homepage', function ($view) {
             $view->with([
                 'tags' => \App\Models\Tag::all(),
                 'posts' => \App\Models\Post::where('isValid', true)->get(),
@@ -44,11 +44,11 @@ class AppServiceProvider extends ServiceProvider
                 // Add other data variables here
             ]);
         });
-        view()->composer('operator.*', function ($view) {
-            $view->with([
-                'posts' => \App\Models\Post::where('user_id', Auth::id())->get(),
-            ]);
-        });
+        // view()->composer('operator.*', function ($view) {
+        //     $view->with([
+        //         'posts' => \App\Models\Post::where('user_id', Auth::id())->get(),
+        //     ]);
+        // });
 
         Relation::enforceMorphMap([
             'role' => \App\Models\Role::class,

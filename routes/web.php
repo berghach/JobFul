@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\EnsureUserIsAdmin;
 use App\Http\Controllers\CompanyController;
@@ -15,6 +16,8 @@ Route::middleware('auth')->group(function () {
             return view('admin.dashboard');
         })->name('admin-dashboard');
         Route::get('/users', [UserController::class, 'index'])->name('users.index');
+        Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+        Route::get('/posts/{post}/show', [PostController::class, 'show'])->name('posts.show');
         Route::get('/companies', [CompanyController::class, 'index'])->name('companies.index');
         Route::get('/add-company', [CompanyController::class, 'create'])->name('company.create');
         Route::post('/add-company/store', [CompanyController::class, 'store'])->name('company.store');
@@ -42,4 +45,3 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [AuthController::class, 'store']);
 });
 
-// Route::get('/test', [UserController::class, 'index'])->name('test');

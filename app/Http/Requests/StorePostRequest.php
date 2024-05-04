@@ -34,6 +34,7 @@ class StorePostRequest extends FormRequest
             'job_type' => ['nullable', 'string', 'max:255'],
             'study_level' => ['nullable', 'string', 'max:255'],
             'price' => ['nullable', 'numeric', 'max:255'],
+            'deadline' => ['nullable', 'date'],
         ];
     }
     /**

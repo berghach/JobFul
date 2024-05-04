@@ -6,6 +6,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -14,7 +15,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        if(Auth::user()->role->name == "admin"){
+            $posts = Post::all();
+        }elseif(Auth::user()->role->name == "operator"){
+            $posts = Post::where('user_id', Auth::user()->id)->get();
+        }
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -52,7 +58,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('posts.show', compact('post'));
     }
 
     /**

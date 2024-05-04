@@ -25,15 +25,13 @@ class UpdateMediaRequest extends FormRequest
         $method = $this->method();
         if ($method == 'PUT'){
             return [
-                'name' => ['required', 'string'],
-                'path' => ['required', 'file'],
                 'type' => ['required', 'string'],
+                'path' => ['required', 'file'],
             ];
         }else{
             return [
-                'name' => ['sometimes','required', 'string'],
-                'path' => ['sometimes','required', 'file'],
                 'type' => ['sometimes','required', 'string'],
+                'path' => ['sometimes','required', 'file'],
             ];
         }
     }

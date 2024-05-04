@@ -18,7 +18,7 @@
                     <li class="inline-flex items-center gap-2"><i data-feather="folder"></i>Applications</li>
                 </a>
                 <hr>
-                <a class=" w-full ps-2 py-1 rounded-s-xl hover:bg-secondary ease-in-out duration-200" href="">
+                <a class=" w-full ps-2 py-1 rounded-s-xl hover:bg-secondary ease-in-out duration-200 {{request()->routeIs('posts.*') ? 'bg-secondary' : ''}}" href="{{ route('posts.index') }}">
                     <li class="inline-flex items-center gap-2"><i data-feather="book-open"></i>Posts</li>
                 </a>
                 <hr>
@@ -38,7 +38,7 @@
     </div>
 </aside>
 <div class="mt-32 lg:hidden ps-3">
-    <button id="sidenav-button" class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center rounded-full bg-primary" type="button">
+    <button id="sidenav-button" onclick="toggleSidenav()" class=" z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center rounded-full bg-primary" type="button">
         @switch(Route::currentRouteName())
             @case('admin-dashboard')
                 <i data-feather="activity"></i>Dashboard
@@ -52,13 +52,16 @@
             @case('companies.index')
                 <i data-feather="briefcase"></i>Companies
                 @break
+            @case('posts.index')
+                <i data-feather="book-open"></i>Posts
+                @break
             @default
                 
         @endswitch
         {{-- {{Route::currentRouteName()}} --}}
         <i data-feather="chevron-down"></i>
     </button>
-    <div id="sidenav-states" class="z-10  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 ">
+    <div id="sidenav-states" class="absolute z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 ">
         <ul class="py-2 text-sm text-gray-700 gap-y-2">
             <li>
                 <a href={{ Auth::user()->role->name === 'admin' ? route('admin-dashboard') : route('operator-dashboard') }} class="inline-flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-primary ease-in-out duration-200 {{request()->routeIs('admin-dashboard')||request()->routeIs('operator-dashboard') ? 'bg-primary' : ''}}">
@@ -90,7 +93,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="" class="inline-flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-primary ease-in-out duration-200 ">
+                    <a href="{{ route('posts.index') }}" class="inline-flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-primary ease-in-out duration-200 {{request()->routeIs('posts.*') ? 'bg-primary' : ''}}">
                         <div class="inline-flex items-center gap-2">
                             <i data-feather="book-open"></i>Posts
                         </div>

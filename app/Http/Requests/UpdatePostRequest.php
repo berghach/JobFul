@@ -31,10 +31,12 @@ class UpdatePostRequest extends FormRequest
                 'industry' => ['required', 'string', 'max:255'],
                 'function' => ['required', 'string', 'max:255'],
                 'location' => ['required', 'string', 'max:255'],
-                'section' => ['required', 'array'],
-                'section.*.key' => ['required_with:section', 'string'],
-                'section.*.value' => ['required_with:section', 'numeric'],
-            ];
+                'contract' => ['required', 'string', 'max:255'],
+                'job_type' => ['required', 'string', 'max:255'],
+                'study_level' => ['required', 'string', 'max:255'],
+                'price' => ['required', 'numeric', 'max:255'],
+                'deadline' => ['required', 'date'],
+                ];
         }else{
             return [
                 'post_type' => ['sometimes','required', 'in:job request,job offer,service request,service offer'],
@@ -43,9 +45,11 @@ class UpdatePostRequest extends FormRequest
                 'industry' => ['sometimes','required', 'string', 'max:255'],
                 'function' => ['sometimes','required', 'string', 'max:255'],
                 'location' => ['sometimes','required', 'string', 'max:255'],
-                'section' => ['sometimes','required', 'array'],
-                'section.*.key' => ['sometimes', 'required_with:section', 'string'],
-                'section.*.value' => ['sometimes', 'required_with:section', 'numeric'],
+                'contract' => ['sometimes','required', 'string', 'max:255'],
+                'job_type' => ['sometimes','required', 'string', 'max:255'],
+                'study_level' => ['sometimes','required', 'string', 'max:255'],
+                'price' => ['sometimes','required', 'numeric', 'max:255'],
+                'deadline' => ['sometimes','required', 'date'],
             ];
         }
     }
