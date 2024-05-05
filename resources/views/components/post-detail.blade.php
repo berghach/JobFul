@@ -21,6 +21,26 @@
                         <p class="bg-gray-200 text-gray-800 px-2 py-1 rounded-2xl">#{{$item->name}}</p>
                     @endforeach
                 </div>
+                @if (Auth::user()->role->name === 'admin')
+                    <div class="max-w-none mt-4 inline-flex items-center gap-2">
+                        <p class="mb-1 py-1 px-2 w-min font-bold text-gray-100 rounded-full {{$post->isValid === true ? 'bg-green-500' : 'bg-red-500'}}">{{$post->isValid ? 'valid' : 'invalid'}}</p>
+                        @if ($post->isValid)
+                            <form action="{{route('posts.validate', $post)}}" method="POST">
+                                @csrf
+                                <button type="submit">
+                                    <i data-feather="check-square" class="text-green-500"></i>
+                                </button>
+                            </form>
+                        @else
+                            <form action="{{route('posts.validate', $post)}}" method="POST">
+                                @csrf
+                                <button type="submit">
+                                    <i data-feather="square" class="text-red-500"></i>
+                                </button>
+                            </form>
+                        @endif
+                    </div>
+                @endif
             </div>
             <div class="w-full md:w-1/4 px-4">
                 <div class="bg-gray-100 p-2">

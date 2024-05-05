@@ -100,10 +100,37 @@ class PostController extends Controller
     }
 
     /**
+     * Validate the specified resource in storage.
+     */
+    public function validate(Post $post)
+    {
+        if($post->isValid){
+            $post->update([
+                'isValid' => false,
+            ]);
+        }else{
+            $post->update([
+                'isValid' => true,
+            ]);
+        }
+
+        return redirect()->back()->with('success', 'Post updated successfully!');
+    }
+
+    /**
      * Remove the specified resource from storage.
      */
     public function destroy(Post $post)
     {
         $post->delete();
+    }
+
+    /**
+     * Search for a specified resource.
+     */
+    public function search(Request $request)
+    {
+        $posts = Post::where('title', 'like', '%' . $request->input('search') . '%')->get();
+        return view('homepage', compact('posts'));
     }
 }

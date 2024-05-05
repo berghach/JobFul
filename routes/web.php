@@ -18,6 +18,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/users', [UserController::class, 'index'])->name('users.index');
         Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
         Route::get('/posts/{post}/show', [PostController::class, 'show'])->name('posts.show');
+        Route::post('/posts/{post}/validate', [PostController::class, 'validate'])->name('posts.validate');
         Route::get('/companies', [CompanyController::class, 'index'])->name('companies.index');
         Route::get('/add-company', [CompanyController::class, 'create'])->name('company.create');
         Route::post('/add-company/store', [CompanyController::class, 'store'])->name('company.store');
@@ -35,6 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('homepage');
     })->name('home');
+    Route::post('/search', [PostController::class, 'search'])->name('search');
     Route::post('/logout', [AuthController::class, 'destroy'])->name('logout');
 });
 
